@@ -38,8 +38,8 @@ sub before_build {
 
     ### get our stash, config...
     my $stash   = $self->zilla->stash_named('%PodWeaver');
-    $self->_register_stash('%PodWeaver', $stash = PodWeaver->new())
-        unless $stash;
+    do { $stash = PodWeaver->new; $self->_register_stash('%PodWeaver', $stash) }
+        unless defined $stash;
     my $config  = $stash->_config;
     my @authors = $self->zilla->authors->flatten;
 
