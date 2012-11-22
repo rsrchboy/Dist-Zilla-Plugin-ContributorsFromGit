@@ -1,0 +1,51 @@
+=pod
+
+=encoding utf-8
+
+=for :stopwords Chris Weyl
+
+=head1 NAME
+
+Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from the list of git authors
+
+=head1 VERSION
+
+This document describes version 0.000_01 of Dist::Zilla::Plugin::ContributorsFromGit - released November 16, 2012 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+
+=head1 SYNOPSIS
+
+=head1 DESCRIPTION
+
+=head1 SEE ALSO
+
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
+L<Pod::Weaver::Section::Contributor>
+
+=item *
+
+L<Dist::Zilla::Stash::PodWeaver>
+
+=back
+
+=head1 SOURCE
+
+The development version is on github at L<http://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit>
+and may be cloned from L<git://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git>
+
+=head1 AUTHOR
+
+Chris Weyl <cweyl@alumni.drew.edu>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2012 by Chris Weyl.
+
+This is free software, licensed under:
+
+  The GNU Lesser General Public License, Version 2.1, February 1999
+
