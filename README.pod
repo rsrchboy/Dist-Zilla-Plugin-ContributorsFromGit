@@ -2,7 +2,7 @@
 
 =encoding utf-8
 
-=for :stopwords Chris Weyl
+=for :stopwords Chris Weyl zilla
 
 =head1 NAME
 
@@ -10,11 +10,38 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 =head1 VERSION
 
-This document describes version 0.000_01 of Dist::Zilla::Plugin::ContributorsFromGit - released November 16, 2012 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.001 of Dist::Zilla::Plugin::ContributorsFromGit - released November 25, 2012 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
+    ; in your dist.ini
+    [ContributorsFromGit]
+
+    ; in your weaver.ini
+    [Contributors]
+
 =head1 DESCRIPTION
+
+This plugin makes it easy to acknowledge the contributions of others by
+populating a L<%PodWeaver|Dist::Zilla::Stash::PodWeaver> stash with the unique
+list of all git commit authors reachable from the current HEAD.
+
+=head1 OVERVIEW
+
+On collecting the unique list of reachable commit authors from git, we search
+and remove any git authors from the list of authors L<Dist::Zilla> knows
+about.  We then look for a stash named C<%PodWeaver>; if we don't find one
+then we create an instance of L<Dist::Zilla::Stash::PodWeaver> and register it
+with our zilla instance.  Then we add the list of contributors (the filtered
+git authors list) to the stash in such a way that
+L<Pod::Weaver::Section::Contributors> can find them.
+
+Note that you do not need to have the C<%PodWeaver> stash created; it will be
+added if it is not found.  However, your L<Pod::Weaver> config (aka
+c<weaver.ini>) must include the
+L<Contributors|Pod::Weaver::Section::Contributors> section plugin.
+
+=for Pod::Coverage before_build
 
 =head1 SEE ALSO
 
@@ -24,18 +51,13 @@ Please see those modules/websites for more information related to this module.
 
 =item *
 
-L<Pod::Weaver::Section::Contributor>
+L<Pod::Weaver::Section::Contributors>
 
 =item *
 
 L<Dist::Zilla::Stash::PodWeaver>
 
 =back
-
-=head1 SOURCE
-
-The development version is on github at L<http://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit>
-and may be cloned from L<git://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git>
 
 =head1 AUTHOR
 

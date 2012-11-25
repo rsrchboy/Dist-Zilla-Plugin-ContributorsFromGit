@@ -1,4 +1,6 @@
 Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
 {{$NEXT}}
+
+0.001     2012-11-25 01:41:41 PST8PDT
 	* initial release
