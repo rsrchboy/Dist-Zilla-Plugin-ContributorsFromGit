@@ -30,6 +30,8 @@ my @AUTHORS = (
         "git commit --author '$AUTHORS[0]' -m 'one'",
         'touch bar && git add bar',
         "git commit --author '$AUTHORS[1]' -m 'two'",
+        'touch baz && git add baz',
+        q{git commit --author 'Your Name <you@example.com>' -m 'two'},
         ;
 }
 

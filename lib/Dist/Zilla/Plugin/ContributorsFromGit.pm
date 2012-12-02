@@ -33,8 +33,9 @@ sub before_build {
 
     ### and get our list from git, filtering: "@authors"
     my @contributors = uniq sort
-        grep  { none(@authors) eq $_ }
-        apply { chomp                }
+        grep  { $_ ne 'Your Name <you@example.com>' }
+        grep  { none(@authors) eq $_                }
+        apply { chomp                               }
         `git log --format="%aN <%aE>"`
         ;
 
@@ -49,7 +50,7 @@ __PACKAGE__->meta->make_immutable;
 !!42;
 __END__
 
-=for :stopwords zilla
+=for :stopwords zilla BeforeBuild
 
 =for Pod::Coverage before_build
 
