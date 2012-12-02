@@ -2,5 +2,10 @@ Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
 {{$NEXT}}
 
+0.002     2012-12-02 13:52:34 PST8PDT
+	* pod update -- note we run in the BeforeBuild phase
+	* filter 'Your Name <you@example.com>' from the built list.  Really, we
+	  need functionality to filter / consolidate, but this will work for now.
+
 0.001     2012-11-25 01:41:41 PST8PDT
 	* initial release
