@@ -82,6 +82,9 @@ added if it is not found.  However, your L<Pod::Weaver> config (aka
 c<weaver.ini>) must include the
 L<Contributors|Pod::Weaver::Section::Contributors> section plugin.
 
+This plugin runs during the L<BeforeBuild|Dist::Zilla::Role::BeforeBuild>
+phase.
+
 =head1 SEE ALSO
 
 L<Pod::Weaver::Section::Contributors>
