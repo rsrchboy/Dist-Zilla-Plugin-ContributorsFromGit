@@ -5,6 +5,7 @@ package Dist::Zilla::Plugin::ContributorsFromGit;
 use Moose;
 use namespace::autoclean;
 use autobox::Core;
+use File::Which 'which';
 use List::AllUtils qw{ apply max uniq };
 use Syntax::Keyword::Junction 'none';
 
@@ -23,6 +24,15 @@ with
 
 sub before_build {
     my $self = shift @_;
+
+    # skip if we can't find git
+    unless (which 'git') {
+        $self->log('The "git" executable has not been found');
+        return;
+    }
+
+    # XXX we should also check here that we're in a git repo, but I'm going to
+    # leave that for the git stash (when it's not vaporware)
 
     ### get our stash, config...
     my $stash   = $self->zilla->stash_named('%PodWeaver');

@@ -9,10 +9,14 @@ use Test::TempDir 'scratch';
 use Test::DZil;
 use Directory::Scratch;
 use File::chdir;
+use File::Which 'which';
 use IPC::System::Simple (); # explicit dep for autodie system
 use Path::Class;
 
 use lib 't/lib';
+
+plan skip_all => 'git not found'
+    unless which 'git';
 
 my $ds        = scratch;
 my $dist_root = $ds->base;
