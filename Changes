@@ -2,6 +2,9 @@ Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
 {{$NEXT}}
 
+0.003     2012-12-27 21:42:43 CST6CDT
+	* don't ABEND on no git, just skip tests and return early from the plugin
+
 0.002     2012-12-02 13:52:34 PST8PDT
 	* pod update -- note we run in the BeforeBuild phase
 	* filter 'Your Name <you@example.com>' from the built list.  Really, we
