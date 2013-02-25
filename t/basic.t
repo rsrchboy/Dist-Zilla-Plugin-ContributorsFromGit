@@ -56,6 +56,13 @@ ok $tzil->plugin_named('ContributorsFromGit'), 'tzil has our test plugin';
 
 ok !$tzil->stash_named($STASH_NAME), 'tzil does not yet have the stash';
 $tzil->release;
+
+is_deeply
+    [ sort @{$tzil->distmeta->{x_contributors}} ],
+    [ sort @AUTHORS ],
+    "x_contributors metadata"
+    ;
+
 my $stash = $tzil->stash_named($STASH_NAME);
 isa_ok $stash, 'Dist::Zilla::Stash::PodWeaver';
 
