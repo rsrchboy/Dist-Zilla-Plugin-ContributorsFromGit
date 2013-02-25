@@ -14,9 +14,15 @@ use IPC::System::Simple ( ); # explict dep for autodie system
 
 use aliased 'Dist::Zilla::Stash::PodWeaver';
 
+has contributor_list => (
+    is => 'rw',
+    isa => 'ArrayRef[Str]',
+);
+
 with
     'Dist::Zilla::Role::BeforeBuild',
     'Dist::Zilla::Role::RegisterStash',
+    'Dist::Zilla::Role::MetaProvider',
     ;
 
 # debugging...
@@ -49,11 +55,18 @@ sub before_build {
         `git log --format="%aN <%aE>"`
         ;
 
+    $self->contributor_list(\@contributors);
+
     my $i = 0;
     do { $config->{"Contributors.contributors[$i]"} = $_; $i++ }
         for @contributors;
 
     return;
+}
+
+sub metadata {
+    my $self = shift @_;
+    return { 'x_contributors' => $self->contributor_list };
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -95,6 +108,9 @@ L<Contributors|Pod::Weaver::Section::Contributors> section plugin.
 
 This plugin runs during the L<BeforeBuild|Dist::Zilla::Role::BeforeBuild>
 phase.
+
+The list of contributors is also added to distribution metadata under the custom
+C<x_contributors> key.
 
 =head1 SEE ALSO
 
