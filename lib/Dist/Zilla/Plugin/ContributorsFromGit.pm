@@ -4,6 +4,7 @@ package Dist::Zilla::Plugin::ContributorsFromGit;
 
 use Moose;
 use namespace::autoclean;
+use MooseX::AttributeShortcuts 0.015;
 use autobox::Core;
 use File::Which 'which';
 use List::AllUtils qw{ apply max uniq };
@@ -14,11 +15,6 @@ use IPC::System::Simple ( ); # explict dep for autodie system
 
 use aliased 'Dist::Zilla::Stash::PodWeaver';
 
-has contributor_list => (
-    is => 'rw',
-    isa => 'ArrayRef[Str]',
-);
-
 with
     'Dist::Zilla::Role::BeforeBuild',
     'Dist::Zilla::Role::RegisterStash',
@@ -27,6 +23,25 @@ with
 
 # debugging...
 #use Smart::Comments '###';
+
+has contributor_list => (
+    is      => 'lazy',
+    isa     => 'ArrayRef[Str]',
+    builder => sub {
+        my $self = shift @_;
+        my @authors = $self->zilla->authors->flatten;
+
+        ### and get our list from git, filtering: "@authors"
+        my @contributors = uniq sort
+            grep  { $_ ne 'Your Name <you@example.com>' }
+            grep  { none(@authors) eq $_                }
+            apply { chomp                               }
+            `git log --format="%aN <%aE>"`
+            ;
+
+        return \@contributors;
+    },
+);
 
 sub before_build {
     my $self = shift @_;
@@ -44,18 +59,8 @@ sub before_build {
     my $stash   = $self->zilla->stash_named('%PodWeaver');
     do { $stash = PodWeaver->new; $self->_register_stash('%PodWeaver', $stash) }
         unless defined $stash;
-    my $config  = $stash->_config;
-    my @authors = $self->zilla->authors->flatten;
-
-    ### and get our list from git, filtering: "@authors"
-    my @contributors = uniq sort
-        grep  { $_ ne 'Your Name <you@example.com>' }
-        grep  { none(@authors) eq $_                }
-        apply { chomp                               }
-        `git log --format="%aN <%aE>"`
-        ;
-
-    $self->contributor_list(\@contributors);
+    my $config       = $stash->_config;
+    my @contributors = $self->contributor_list->flatten;
 
     my $i = 0;
     do { $config->{"Contributors.contributors[$i]"} = $_; $i++ }
@@ -75,7 +80,7 @@ __END__
 
 =for :stopwords zilla BeforeBuild
 
-=for Pod::Coverage before_build
+=for Pod::Coverage before_build metadata
 
 =head1 SYNOPSIS
 
