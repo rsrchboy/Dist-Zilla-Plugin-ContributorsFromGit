@@ -10,7 +10,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 =head1 VERSION
 
-This document describes version 0.003 of Dist::Zilla::Plugin::ContributorsFromGit - released December 27, 2012 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.004 of Dist::Zilla::Plugin::ContributorsFromGit - released February 26, 2013 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
@@ -44,7 +44,10 @@ L<Contributors|Pod::Weaver::Section::Contributors> section plugin.
 This plugin runs during the L<BeforeBuild|Dist::Zilla::Role::BeforeBuild>
 phase.
 
-=for Pod::Coverage before_build
+The list of contributors is also added to distribution metadata under the custom
+C<x_contributors> key.
+
+=for Pod::Coverage before_build metadata
 
 =head1 SEE ALSO
 
@@ -65,6 +68,10 @@ L<Dist::Zilla::Stash::PodWeaver>
 =head1 AUTHOR
 
 Chris Weyl <cweyl@alumni.drew.edu>
+
+=head1 CONTRIBUTOR
+
+David Golden <dagolden@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
