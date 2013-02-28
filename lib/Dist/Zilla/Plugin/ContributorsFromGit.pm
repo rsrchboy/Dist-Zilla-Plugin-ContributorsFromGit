@@ -1,4 +1,16 @@
+#
+# This file is part of Dist-Zilla-Plugin-ContributorsFromGit
+#
+# This software is Copyright (c) 2012 by Chris Weyl.
+#
+# This is free software, licensed under:
+#
+#   The GNU Lesser General Public License, Version 2.1, February 1999
+#
 package Dist::Zilla::Plugin::ContributorsFromGit;
+{
+  $Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.005';
+}
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
@@ -77,11 +89,22 @@ sub metadata {
 
 __PACKAGE__->meta->make_immutable;
 !!42;
+
 __END__
 
-=for :stopwords zilla BeforeBuild
+=pod
 
-=for Pod::Coverage before_build metadata
+=encoding utf-8
+
+=for :stopwords Chris Weyl zilla BeforeBuild
+
+=head1 NAME
+
+Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from the list of git authors
+
+=head1 VERSION
+
+This document describes version 0.005 of Dist::Zilla::Plugin::ContributorsFromGit - released February 28, 2013 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
@@ -118,10 +141,38 @@ phase.
 The list of contributors is also added to distribution metadata under the custom
 C<x_contributors> key.
 
+=for Pod::Coverage before_build metadata
+
 =head1 SEE ALSO
+
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
 
 L<Pod::Weaver::Section::Contributors>
 
+=item *
+
 L<Dist::Zilla::Stash::PodWeaver>
+
+=back
+
+=head1 AUTHOR
+
+Chris Weyl <cweyl@alumni.drew.edu>
+
+=head1 CONTRIBUTOR
+
+David Golden <dagolden@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2012 by Chris Weyl.
+
+This is free software, licensed under:
+
+  The GNU Lesser General Public License, Version 2.1, February 1999
 
 =cut

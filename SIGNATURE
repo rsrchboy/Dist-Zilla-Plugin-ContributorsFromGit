@@ -1,0 +1,50 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.70.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 8974b78541d3d0b53cd9d5c348a2856e1da02374 Changes
+SHA1 a5897e9d2b28ebe7546896cde1e9a35352e03ca5 INSTALL
+SHA1 05207cbc5971035849c1de2c7cb3babaeaccb6fb LICENSE
+SHA1 0835651a45cb25351f2d01f24586b80f72b8a11f MANIFEST
+SHA1 2972dbe21e48f793516fa8f00715777f338d9ecf META.json
+SHA1 b74570863ec69edcc30fa7ceb0df086ef9f27e97 META.yml
+SHA1 8c41e7d6a38633ddcd1d8c6ca7502e7f4b117152 Makefile.PL
+SHA1 1e59cfe5b6c51b525f08b9822b2be95f874cc46d README
+SHA1 6af3614dd5a487f17010269efefa8d07385c844c cpanfile
+SHA1 3e9cd4320e3b5beb33ae6e8962e488c8507783cf dist.ini
+SHA1 56f20a843993a46ca57b8cb37b32c3bdf009f1d8 lib/Dist/Zilla/Plugin/ContributorsFromGit.pm
+SHA1 56aca899d0500136924d5ccfad44b1b1bc74c73c t/00-compile.t
+SHA1 a9967387114e1b0a93267e26bd17e0d81a6598fe t/000-report-versions-tiny.t
+SHA1 af3a53c174d8e6045292b4f7a620de8ebfe263e1 t/author-pod-spell.t
+SHA1 f27e6bd1313fc3952de90ce86557d1f0b1d77ac4 t/basic.t
+SHA1 9c3627ff37f4fd5bddc34bf46cf3359eaf76a060 t/release-consistent-version.t
+SHA1 a032c41ef6887fab1b900669c2d304fab46680e2 t/release-eol.t
+SHA1 013a2fa91923596c220ebd108027932a18e7a57f t/release-has-version.t
+SHA1 b6b40c923e42f7044074b4e92124b036609ba834 t/release-no-smart-comments.t
+SHA1 455d1dd1867212a665ad5ea4126b572411de300c t/release-no-tabs.t
+SHA1 8d392772f8daa13e19783e0ef19eaa2db670579a t/release-pod-coverage.t
+SHA1 0fc9a7c4499cbc81b73c673ad4b2c7ea6d32e2d7 t/release-pod-linkcheck.t
+SHA1 0353d974d3538491ca937a686607f51c7680fbf9 t/release-pod-syntax.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+iQEcBAEBAgAGBQJRL2LkAAoJEOd5N1CvIgQkotIH+wZc9+YUxbqTQdrbGbUjVERJ
+Q40KtcSA+RAYoj2UfGwBHFhcAershPndrjkqSsAbiNZs82rKRRZ0hhUINVED8O1k
+iUphqP9JemnjBQbNMLTHSGkS8GzJdmPorVpl2ropamMi0f96em+79Chkq+4LSB7H
+7wqvvFCYJ+LUwCz8Ne+l+UxHKFK5XjRuSwxjLce7kZlYvamUJQjepT359cQEFXGi
+5OUO/84CP1YXN1JGosTWYI52Bp9NF1GGO+GfDTHj05Pnn2/ebiSTsXikWxSQrBuJ
+onOXxkc5LyKvEDW5SN7eYTSSVmodb1mhuW2VYszFi+K2ImZp6m3BzheA2pehixs=
+=D4/I
+-----END PGP SIGNATURE-----
