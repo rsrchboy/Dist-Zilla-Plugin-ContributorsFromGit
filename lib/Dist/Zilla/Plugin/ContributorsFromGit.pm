@@ -71,7 +71,8 @@ sub before_build {
 
 sub metadata {
     my $self = shift @_;
-    return { 'x_contributors' => $self->contributor_list };
+    my $list = $self->contributor_list;
+    return @$list ? { 'x_contributors' => $list } : {};
 }
 
 __PACKAGE__->meta->make_immutable;
