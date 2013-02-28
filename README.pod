@@ -10,7 +10,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 =head1 VERSION
 
-This document describes version 0.004 of Dist::Zilla::Plugin::ContributorsFromGit - released February 26, 2013 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.005 of Dist::Zilla::Plugin::ContributorsFromGit - released February 28, 2013 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
