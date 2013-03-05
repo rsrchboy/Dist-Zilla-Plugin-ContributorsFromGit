@@ -118,6 +118,12 @@ phase.
 The list of contributors is also added to distribution metadata under the custom
 C<x_contributors> key.
 
+=for :stopwords shortlog committer
+
+If you have duplicate contributors because of differences in committer name
+or email you can use a C<.mailmap> file to canonicalize contributor names
+and emails.  See L<git help shortlog|git-shortlog(1)> for details.
+
 =head1 SEE ALSO
 
 L<Pod::Weaver::Section::Contributors>
