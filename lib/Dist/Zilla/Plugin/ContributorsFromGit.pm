@@ -66,6 +66,16 @@ sub before_build {
     do { $config->{"Contributors.contributors[$i]"} = $_; $i++ }
         for @contributors;
 
+    # add contributor names as stopwords
+    $i = 0;
+    my @stopwords = uniq
+        apply { split / /        }
+        apply { /^(.*) <.*$/; $1 }
+        @contributors
+        ;
+    do { $config->{"StopWords.include[$i]"} = $_; $i++ }
+        for @stopwords;
+
     return;
 }
 
