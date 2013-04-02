@@ -2,6 +2,7 @@ package Dist::Zilla::Plugin::ContributorsFromGit;
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
+use Encode qw(decode_utf8);
 use Moose;
 use namespace::autoclean;
 use MooseX::AttributeShortcuts 0.015;
@@ -35,7 +36,7 @@ has contributor_list => (
         my @contributors = uniq sort
             grep  { $_ ne 'Your Name <you@example.com>' }
             grep  { none(@authors) eq $_                }
-            apply { chomp                               }
+            apply { chomp; $_ = decode_utf8($_)         }
             `git log --format="%aN <%aE>"`
             ;
 
