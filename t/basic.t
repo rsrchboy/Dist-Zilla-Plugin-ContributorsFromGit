@@ -1,5 +1,6 @@
 use strict;
 use warnings;
+use utf8;
 
 use autodie 'system';
 use autobox::Core;
@@ -24,6 +25,7 @@ my $dist_root = $ds->base;
 my @AUTHORS = (
     'Some One <one@some.org>',
     'Another One <two@some.org>',
+    'James "宮川達彦" Salmoń <woo@bip.com>',
 );
 
 {
@@ -35,6 +37,8 @@ my @AUTHORS = (
         'touch bar && git add bar',
         "git commit --author '$AUTHORS[1]' -m 'two'",
         'touch baz && git add baz',
+        "git commit --author '$AUTHORS[2]' -m 'three'",
+        'touch aack && git add aack',
         q{git commit --author 'Your Name <you@example.com>' -m 'two'},
         ;
 }
