@@ -2,6 +2,8 @@ package Dist::Zilla::Plugin::ContributorsFromGit;
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
+use utf8;
+
 use Encode qw(decode_utf8);
 use Moose;
 use namespace::autoclean;
