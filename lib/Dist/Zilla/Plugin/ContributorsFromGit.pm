@@ -125,6 +125,9 @@ added if it is not found.  However, your L<Pod::Weaver> config (aka
 c<weaver.ini>) must include the
 L<Contributors|Pod::Weaver::Section::Contributors> section plugin.
 
+The contributor names are also added to the stash for
+L<Pod::Weaver::Plugin::StopWords>.
+
 This plugin runs during the L<BeforeBuild|Dist::Zilla::Role::BeforeBuild>
 phase.
 
