@@ -76,7 +76,7 @@ sub before_build {
         apply { /^(.*) <.*$/; $1 }
         @contributors
         ;
-    do { $config->{"StopWords.include[$i]"} = $_; $i++ }
+    do { $config->{"-StopWords.include[$i]"} = $_; $i++ }
         for @stopwords;
 
     return;
