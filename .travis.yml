@@ -14,7 +14,7 @@ install:
    - mkdir ~/.cpanm
    - sudo mount tmpfs -t tmpfs ~/.cpanm
    - export AUTOMATED_TESTING=1 HARNESS_OPTIONS=c HARNESS_TIMER=1
-   - cpanm --verbose Method::Lexical
+   - cpanm --verbose Method::Lexical UNIVERSAL::AUTHORITY::Lexical
    - export AUTOMATED_TESTING=1 HARNESS_OPTIONS=j10:c HARNESS_TIMER=1
    - cpanm --quiet Dist::Zilla Module::Metadata
    - dzil authordeps | cpanm --quiet --notest
