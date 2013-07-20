@@ -1,5 +1,6 @@
 language: perl
 perl:
+   - "5.18"
    - "5.16"
    - "5.14"
    - "5.12"
@@ -18,12 +19,12 @@ install:
    - sudo mount tmpfs -t tmpfs ~/.cpanm
    - export AUTOMATED_TESTING=1 HARNESS_OPTIONS=j10:c HARNESS_TIMER=1
    - cpanm --quiet Dist::Zilla Module::Metadata
-   - dzil authordeps | grep -vP '[^\w:]' | cpanm --quiet --notest
+   - dzil authordeps | cpanm --quiet --notest
 
    # echo "# for LinkCheck"
    - cpanp x
 
-   - dzil listdeps | grep -vP '[^\w:]' | cpanm --verbose
+   - dzil listdeps | cpanm --verbose
 
 script:
    - export DZSIGN=archive
