@@ -1,10 +1,6 @@
 language: perl
 perl:
-   - "5.18"
    - "5.16"
-   - "5.14"
-   - "5.12"
-   - "5.10"
 
 install:
    # git bits sometimes needed...
@@ -17,6 +13,8 @@ install:
    - rm -rf ~/.cpanm
    - mkdir ~/.cpanm
    - sudo mount tmpfs -t tmpfs ~/.cpanm
+   - export AUTOMATED_TESTING=1 HARNESS_OPTIONS=c HARNESS_TIMER=1
+   - cpanm --verbose Method::Lexical
    - export AUTOMATED_TESTING=1 HARNESS_OPTIONS=j10:c HARNESS_TIMER=1
    - cpanm --quiet Dist::Zilla Module::Metadata
    - dzil authordeps | cpanm --quiet --notest
