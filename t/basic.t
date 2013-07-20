@@ -70,7 +70,8 @@ is_deeply
 my $stash = $tzil->stash_named($STASH_NAME);
 isa_ok $stash, 'Dist::Zilla::Stash::PodWeaver';
 
-my $cleanup_ok = is_deeply
+my $cleanup_ok =
+    is_deeply(
     [
         sort
         map  { $stash->_config->{$_}                }
@@ -79,7 +80,17 @@ my $cleanup_ok = is_deeply
     ],
     [ sort @AUTHORS ],
     'contributors and git authors match up',
-    ;
+    )
+    and is_deeply(
+    [
+        sort
+        map  { $stash->_config->{$_}         }
+        grep { /^-StopWords\.include\[\d+\]/ }
+        $stash->_config->keys->flatten
+    ],
+    [ sort @AUTHORS ],
+    'stopwords and git authors match up',
+    );
 
 $ds->cleanup if $cleanup_ok;
 

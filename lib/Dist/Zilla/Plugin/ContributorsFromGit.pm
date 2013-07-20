@@ -76,7 +76,7 @@ sub before_build {
         apply { /^(.*) <.*$/; $1 }
         @contributors
         ;
-    do { $config->{"StopWords.include[$i]"} = $_; $i++ }
+    do { $config->{"-StopWords.include[$i]"} = $_; $i++ }
         for @stopwords;
 
     return;
@@ -124,6 +124,9 @@ Note that you do not need to have the C<%PodWeaver> stash created; it will be
 added if it is not found.  However, your L<Pod::Weaver> config (aka
 c<weaver.ini>) must include the
 L<Contributors|Pod::Weaver::Section::Contributors> section plugin.
+
+The contributor names are also added to the stash for
+L<Pod::Weaver::Plugin::StopWords>.
 
 This plugin runs during the L<BeforeBuild|Dist::Zilla::Role::BeforeBuild>
 phase.
