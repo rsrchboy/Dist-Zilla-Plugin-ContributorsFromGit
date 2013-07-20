@@ -16,7 +16,7 @@ install:
    - export AUTOMATED_TESTING=1 HARNESS_OPTIONS=c HARNESS_TIMER=1
    - cpanm --verbose Scalar::Util
    - cpanm --installdeps UNIVERSAL::AUTHORITY::Lexical
-   - cpanm --verbose UNIVERSAL::AUTHORITY::Lexical
+   - cpanm --verbose --force UNIVERSAL::AUTHORITY::Lexical
    - export AUTOMATED_TESTING=1 HARNESS_OPTIONS=j10:c HARNESS_TIMER=1
    - cpanm --quiet Dist::Zilla Module::Metadata
    - dzil authordeps | cpanm --quiet --notest
