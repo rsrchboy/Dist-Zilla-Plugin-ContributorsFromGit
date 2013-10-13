@@ -35,11 +35,11 @@ has contributor_list => (
         my @authors = $self->zilla->authors->flatten;
 
         ### and get our list from git, filtering: "@authors"
-        my @contributors = uniq sort
+        my @contributors =
             grep  { $_ ne 'Your Name <you@example.com>' }
             grep  { none(@authors) eq $_                }
-            apply { chomp; $_ = decode_utf8($_)         }
-            `git log --format="%aN <%aE>"`
+            apply { chomp; s/\s*\d+\s*//; $_ = decode_utf8($_) }
+            `git shortlog -s -e`
             ;
 
         return \@contributors;
