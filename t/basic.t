@@ -26,6 +26,7 @@ my @AUTHORS = (
     'Some One <one@some.org>',
     'Another One <two@some.org>',
     'James "宮川達彦" Salmoń <woo@bip.com>',
+    'E. Xavier Ample <example@EXAMPLE.ORG>'
 );
 
 {
@@ -38,6 +39,8 @@ my @AUTHORS = (
         "git commit --author '$AUTHORS[1]' -m 'two'",
         'touch baz && git add baz',
         "git commit --author '$AUTHORS[2]' -m 'three'",
+        'touch biff && git add biff',
+        "git commit --author '$AUTHORS[3]' -m 'four'",
         'touch aack && git add aack',
         q{git commit --author 'Your Name <you@example.com>' -m 'two'},
         ;
@@ -63,7 +66,7 @@ $tzil->release;
 
 is_deeply
     [ sort @{$tzil->distmeta->{x_contributors}} ],
-    [ sort @AUTHORS ],
+    [ sort @AUTHORS[0..2] ],
     "x_contributors metadata"
     ;
 
@@ -77,7 +80,7 @@ my $cleanup_ok = is_deeply
         grep { /^Contributors\.contributors\[\d+\]/ }
         $stash->_config->keys->flatten
     ],
-    [ sort @AUTHORS ],
+    [ sort @AUTHORS[0..2] ],
     'contributors and git authors match up',
     ;
 
