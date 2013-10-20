@@ -37,7 +37,7 @@ has contributor_list => (
         ### and get our list from git, filtering: "@authors"
         my @contributors = uniq sort
             grep  { $_ ne 'Your Name <you@example.com>' }
-            grep  { none(@authors) eq $_                }
+            grep  { my $n = $_; none(map { lc } @authors) eq lc($n) }
             apply { chomp; $_ = decode_utf8($_)         }
             `git log --format="%aN <%aE>"`
             ;
