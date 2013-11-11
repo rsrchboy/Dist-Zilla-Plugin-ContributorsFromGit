@@ -1,6 +1,7 @@
 Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
 {{$NEXT}}
+        * fix stash population for -StopWords (gh#5, Karen Etheridge)
 
 0.006     2013-04-03 12:46:33 PDT-0700
 	* add utf8 support (gh#4, thanks miyagawa)
