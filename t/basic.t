@@ -10,6 +10,7 @@ use Test::TempDir 'scratch';
 use Test::DZil;
 use Directory::Scratch;
 use File::chdir;
+use File::Touch;
 use File::Which 'which';
 use IPC::System::Simple (); # explicit dep for autodie system
 use Path::Class;
@@ -30,17 +31,19 @@ my @AUTHORS = (
 
 {
     local $CWD = "$dist_root";
-    system $_ for
-        'git init',
-        'touch foo && git add foo',
-        "git commit --author '$AUTHORS[0]' -m 'one'",
-        'touch bar && git add bar',
-        "git commit --author '$AUTHORS[1]' -m 'two'",
-        'touch baz && git add baz',
-        "git commit --author '$AUTHORS[2]' -m 'three'",
-        'touch aack && git add aack',
-        q{git commit --author 'Your Name <you@example.com>' -m 'two'},
-        ;
+    system 'git init';
+    touch('foo');
+    system 'git add foo';
+    system qq{git commit --author "$AUTHORS[0]" -m "one"};
+    touch('bar');
+    system 'git add bar';
+    system qq{git commit --author "$AUTHORS[1]" -m "two"};
+    touch('baz');
+    system 'git add baz';
+    system qq{git commit --author "$AUTHORS[2]" -m "three"};
+    touch('aack');
+    system 'git add aack';
+    system q{git commit --author "Your Name <you@example.com>" -m "two"};
 }
 
 my $STASH_NAME = '%PodWeaver';
