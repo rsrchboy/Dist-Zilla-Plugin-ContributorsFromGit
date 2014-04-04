@@ -2,6 +2,9 @@ Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
 {{$NEXT}}
 
+0.007     2014-04-03 22:00:00 PDT-0700
+	* add support for author email mapping
+
 0.006     2013-04-03 12:46:33 PDT-0700
 	* add utf8 support (gh#4, thanks miyagawa)
 	* ...and some (hopefully accurate) tests for said utf8 support
