@@ -1,7 +1,5 @@
 Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
-{{$NEXT}}
-
 0.007     2014-04-03 22:00:00 PDT-0700
 	* add support for author email mapping
 
