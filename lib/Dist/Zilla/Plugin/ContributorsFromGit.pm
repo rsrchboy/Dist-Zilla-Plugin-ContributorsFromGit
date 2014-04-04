@@ -3,11 +3,13 @@ package Dist::Zilla::Plugin::ContributorsFromGit;
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
 use utf8;
+use v5.10;
 
 use Encode qw(decode_utf8);
 use Moose;
 use namespace::autoclean;
 use MooseX::AttributeShortcuts 0.015;
+use MooseX::Types::Moose ':all';
 use autobox::Core;
 use File::Which 'which';
 use List::AllUtils qw{ apply max uniq };
@@ -35,7 +37,8 @@ has contributor_list => (
         my @authors = $self->zilla->authors->flatten;
 
         ### and get our list from git, filtering: "@authors"
-        my @contributors =
+        my @contributors = uniq
+            map   { $self->author_emails->{$_} // $_    }
             grep  { $_ ne 'Your Name <you@example.com>' }
             grep  { none(@authors) eq $_                }
             apply { chomp; s/\s*\d+\s*//; $_ = decode_utf8($_) }
@@ -43,6 +46,60 @@ has contributor_list => (
             ;
 
         return \@contributors;
+    },
+);
+
+=attr author_emails
+
+This is an hash of additional emails that may be found from time to time in
+git commit logs mapped back to the author's 'canonical' author email.
+Generally speaking, the 'canonical email' will be the author's C<@cpan.org>
+address, so that C<metacpan> may properly attribute contributions.
+
+e.g.
+
+    {
+        'Chris Weyl <cweyl@alumni.drew.edu>' => 'Chris Weyl <rsrchboy@cpan.org>',
+        'Chris Weyl <chris.weyl@wps.io>'     => 'Chris Weyl <rsrchboy@cpan.org>',
+        ...
+    }
+
+Note that this attribute is *read-only*; B<please> fork and send a pull
+request if you'd like to add additional mappings.  This is highly
+encouraged. :)
+
+=cut
+
+has author_emails => (
+    is       => 'lazy',
+    isa      => HashRef[Str],
+    init_arg => undef,
+
+    builder => sub {
+
+        state $mapping = {
+            'Chris Weyl <rsrchboy@cpan.org>' => [
+                'Chris Weyl <cweyl@alumni.drew.edu>',
+                'Chris Weyl <cweyl@campusexplorer.com>',
+                'Chris Weyl <chris.weyl@wps.io>',
+                'Chris Weyl <cweyl@whitepointstarllc.com>',
+            ],
+
+            # here's where you'd add your mapping :)
+        };
+
+        my $_map_it = sub {
+            my ($canonical, @alternates) = @_;
+
+            return ( map { $_ => $canonical } @alternates );
+        };
+
+        state $map = {
+            map { $_map_it->($_ => $mapping->{$_}->flatten) }
+            $mapping->keys->flatten
+        };
+
+        return $map;
     },
 );
 
@@ -92,7 +149,7 @@ __PACKAGE__->meta->make_immutable;
 !!42;
 __END__
 
-=for :stopwords zilla BeforeBuild
+=for :stopwords zilla BeforeBuild metacpan
 
 =for Pod::Coverage before_build metadata
 
