@@ -1,0 +1,103 @@
+NAME
+    Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS'
+    POD from the list of git authors
+
+VERSION
+    This document describes version 0.008 of
+    Dist::Zilla::Plugin::ContributorsFromGit - released April 07, 2014 as
+    part of Dist-Zilla-Plugin-ContributorsFromGit.
+
+SYNOPSIS
+        ; in your dist.ini
+        [ContributorsFromGit]
+
+        ; in your weaver.ini
+        [Contributors]
+
+DESCRIPTION
+    This plugin makes it easy to acknowledge the contributions of others by
+    populating a %PodWeaver stash with the unique list of all git commit
+    authors reachable from the current HEAD.
+
+OVERVIEW
+    On collecting the unique list of reachable commit authors from git, we
+    search and remove any git authors from the list of authors Dist::Zilla
+    knows about. We then look for a stash named %PodWeaver; if we don't find
+    one then we create an instance of Dist::Zilla::Stash::PodWeaver and
+    register it with our zilla instance. Then we add the list of
+    contributors (the filtered git authors list) to the stash in such a way
+    that Pod::Weaver::Section::Contributors can find them.
+
+    Note that you do not need to have the %PodWeaver stash created; it will
+    be added if it is not found. However, your Pod::Weaver config (aka
+    c<weaver.ini>) must include the Contributors section plugin.
+
+    This plugin runs during the BeforeBuild phase.
+
+    The list of contributors is also added to distribution metadata under
+    the custom "x_contributors" key.
+
+ATTRIBUTES
+  author_emails
+    This is an hash of additional emails that may be found from time to time
+    in git commit logs mapped back to the author's 'canonical' author email.
+    Generally speaking, the 'canonical email' will be the author's
+    "@cpan.org" address, so that "metacpan" may properly attribute
+    contributions.
+
+    e.g.
+
+        {
+            'Chris Weyl <cweyl@alumni.drew.edu>' => 'Chris Weyl <rsrchboy@cpan.org>',
+            'Chris Weyl <chris.weyl@wps.io>'     => 'Chris Weyl <rsrchboy@cpan.org>',
+            ...
+        }
+
+    Note that this attribute is *read-only*; please fork and send a pull
+    request if you'd like to add additional mappings. This is highly
+    encouraged. :)
+
+    If you have duplicate contributors because of differences in committer
+    name or email you can use a ".mailmap" file to canonicalize contributor
+    names and emails. See git help shortlog for details.
+
+SEE ALSO
+    Please see those modules/websites for more information related to this
+    module.
+
+    *   Pod::Weaver::Section::Contributors
+
+    *   Dist::Zilla::Stash::PodWeaver
+
+SOURCE
+    The development version is on github at
+    <http://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit> and
+    may be cloned from
+    <git://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git>
+
+BUGS
+    Please report any bugs or feature requests on the bugtracker website
+    https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues
+
+    When submitting a bug or request, please include a test-file or a patch
+    to an existing test-file that illustrates the bug or desired feature.
+
+AUTHOR
+    Chris Weyl <cweyl@alumni.drew.edu>
+
+CONTRIBUTORS
+    *   David Golden <dagolden@cpan.org>
+
+    *   Graham Knop <haarg@haarg.org>
+
+    *   Randy Stauner <randy@magnificent-tears.com>
+
+    *   Tatsuhiko Miyagawa <miyagawa@bulknews.net>
+
+COPYRIGHT AND LICENSE
+    This software is Copyright (c) 2012 by Chris Weyl.
+
+    This is free software, licensed under:
+
+      The GNU Lesser General Public License, Version 2.1, February 1999
+

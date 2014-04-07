@@ -1,4 +1,18 @@
+#
+# This file is part of Dist-Zilla-Plugin-ContributorsFromGit
+#
+# This software is Copyright (c) 2012 by Chris Weyl.
+#
+# This is free software, licensed under:
+#
+#   The GNU Lesser General Public License, Version 2.1, February 1999
+#
 package Dist::Zilla::Plugin::ContributorsFromGit;
+BEGIN {
+  $Dist::Zilla::Plugin::ContributorsFromGit::AUTHORITY = 'cpan:RSRCHBOY';
+}
+# git description: 0.007-2-g8392607
+$Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.008';
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
@@ -49,26 +63,6 @@ has contributor_list => (
     },
 );
 
-=attr author_emails
-
-This is an hash of additional emails that may be found from time to time in
-git commit logs mapped back to the author's 'canonical' author email.
-Generally speaking, the 'canonical email' will be the author's C<@cpan.org>
-address, so that C<metacpan> may properly attribute contributions.
-
-e.g.
-
-    {
-        'Chris Weyl <cweyl@alumni.drew.edu>' => 'Chris Weyl <rsrchboy@cpan.org>',
-        'Chris Weyl <chris.weyl@wps.io>'     => 'Chris Weyl <rsrchboy@cpan.org>',
-        ...
-    }
-
-Note that this attribute is *read-only*; B<please> fork and send a pull
-request if you'd like to add additional mappings.  This is highly
-encouraged. :)
-
-=cut
 
 has author_emails => (
     is       => 'lazy',
@@ -147,11 +141,24 @@ sub metadata {
 
 __PACKAGE__->meta->make_immutable;
 !!42;
+
 __END__
 
-=for :stopwords zilla BeforeBuild metacpan
+=pod
 
-=for Pod::Coverage before_build metadata
+=encoding UTF-8
+
+=for :stopwords Chris Weyl David Golden Graham Knop Randy Stauner Tatsuhiko Miyagawa
+<dagolden@cpan.org> <haarg@haarg.org> <randy@magnificent-tears.com>
+<miyagawa@bulknews.net> zilla BeforeBuild metacpan shortlog committer
+
+=head1 NAME
+
+Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from the list of git authors
+
+=head1 VERSION
+
+This document describes version 0.008 of Dist::Zilla::Plugin::ContributorsFromGit - released April 07, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
@@ -188,7 +195,28 @@ phase.
 The list of contributors is also added to distribution metadata under the custom
 C<x_contributors> key.
 
-=for :stopwords shortlog committer
+=head1 ATTRIBUTES
+
+=head2 author_emails
+
+This is an hash of additional emails that may be found from time to time in
+git commit logs mapped back to the author's 'canonical' author email.
+Generally speaking, the 'canonical email' will be the author's C<@cpan.org>
+address, so that C<metacpan> may properly attribute contributions.
+
+e.g.
+
+    {
+        'Chris Weyl <cweyl@alumni.drew.edu>' => 'Chris Weyl <rsrchboy@cpan.org>',
+        'Chris Weyl <chris.weyl@wps.io>'     => 'Chris Weyl <rsrchboy@cpan.org>',
+        ...
+    }
+
+Note that this attribute is *read-only*; B<please> fork and send a pull
+request if you'd like to add additional mappings.  This is highly
+encouraged. :)
+
+=for Pod::Coverage before_build metadata
 
 If you have duplicate contributors because of differences in committer name
 or email you can use a C<.mailmap> file to canonicalize contributor names
@@ -196,8 +224,66 @@ and emails.  See L<git help shortlog|git-shortlog(1)> for details.
 
 =head1 SEE ALSO
 
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
 L<Pod::Weaver::Section::Contributors>
 
+=item *
+
 L<Dist::Zilla::Stash::PodWeaver>
+
+=back
+
+=head1 SOURCE
+
+The development version is on github at L<http://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit>
+and may be cloned from L<git://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git>
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
+=head1 AUTHOR
+
+Chris Weyl <cweyl@alumni.drew.edu>
+
+=head1 CONTRIBUTORS
+
+=over 4
+
+=item *
+
+David Golden <dagolden@cpan.org>
+
+=item *
+
+Graham Knop <haarg@haarg.org>
+
+=item *
+
+Randy Stauner <randy@magnificent-tears.com>
+
+=item *
+
+Tatsuhiko Miyagawa <miyagawa@bulknews.net>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2012 by Chris Weyl.
+
+This is free software, licensed under:
+
+  The GNU Lesser General Public License, Version 2.1, February 1999
 
 =cut

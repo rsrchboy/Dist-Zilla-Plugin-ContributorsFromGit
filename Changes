@@ -1,7 +1,5 @@
 Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
-{{$NEXT}}
-
 0.008     2014-04-07 14:15:05 PDT-0700
 	* NO CODE CHANGES
 	* Handle git identity crisis resulting in test failures a la
