@@ -1,7 +1,5 @@
 Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
-{{$NEXT}}
-
 0.009     2014-04-08 00:45:48 PDT-0700
 	* Put the authors mapping into a ShareDir yaml file
 
