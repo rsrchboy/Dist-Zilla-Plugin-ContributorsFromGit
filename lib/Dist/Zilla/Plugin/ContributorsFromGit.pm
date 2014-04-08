@@ -5,11 +5,8 @@ package Dist::Zilla::Plugin::ContributorsFromGit;
 use utf8;
 use v5.10;
 
+use Reindeer;
 use Encode qw(decode_utf8);
-use Moose;
-use namespace::autoclean;
-use MooseX::AttributeShortcuts 0.015;
-use MooseX::Types::Moose ':all';
 use autobox::Core;
 use File::Which 'which';
 use List::AllUtils qw{ apply max uniq };
