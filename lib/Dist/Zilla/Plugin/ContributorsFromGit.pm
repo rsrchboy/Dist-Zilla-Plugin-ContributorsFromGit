@@ -75,17 +75,18 @@ has author_emails => (
 
     builder => sub {
 
-        my $mapping = YAML::Tiny->read(
-            file(
-                dist_dir('Dist-Zilla-Plugin-ContributorsFromGit'),
-                'author-emails.yaml',
-            ))
+        my $mapping = YAML::Tiny
+            ->read(
+                file(
+                    dist_dir('Dist-Zilla-Plugin-ContributorsFromGit'),
+                    'author-emails.yaml',
+                ),
+            )
             ->[0]
             ;
 
         my $_map_it = sub {
             my ($canonical, @alternates) = @_;
-
             return ( map { $_ => $canonical } @alternates );
         };
 
