@@ -8,9 +8,12 @@ use v5.10;
 use Reindeer;
 use Encode qw(decode_utf8);
 use autobox::Core;
+use autobox::Junctions;
 use File::Which 'which';
 use List::AllUtils qw{ apply max uniq };
-use Syntax::Keyword::Junction 'none';
+use File::ShareDir::ProjectDistDir;
+use YAML::Tiny;
+use Path::Class;
 
 use autodie 'system';
 use IPC::System::Simple ( ); # explict dep for autodie system
@@ -37,7 +40,7 @@ has contributor_list => (
         my @contributors = uniq
             map   { $self->author_emails->{$_} // $_    }
             grep  { $_ ne 'Your Name <you@example.com>' }
-            grep  { none(@authors) eq $_                }
+            grep  { @authors->none eq $_                }
             apply { chomp; s/\s*\d+\s*//; $_ = decode_utf8($_) }
             `git shortlog -s -e`
             ;
@@ -61,7 +64,8 @@ e.g.
         ...
     }
 
-Note that this attribute is *read-only*; B<please> fork and send a pull
+Note that this attribute is *read-only*; its contents are loaded from
+C<share/author-emails.yaml>. B<please> fork and send a pull
 request if you'd like to add additional mappings.  This is highly
 encouraged. :)
 
@@ -74,16 +78,13 @@ has author_emails => (
 
     builder => sub {
 
-        state $mapping = {
-            'Chris Weyl <rsrchboy@cpan.org>' => [
-                'Chris Weyl <cweyl@alumni.drew.edu>',
-                'Chris Weyl <cweyl@campusexplorer.com>',
-                'Chris Weyl <chris.weyl@wps.io>',
-                'Chris Weyl <cweyl@whitepointstarllc.com>',
-            ],
-
-            # here's where you'd add your mapping :)
-        };
+        my $mapping = YAML::Tiny->read(
+            file(
+                dist_dir('Dist-Zilla-Plugin-ContributorsFromGit'),
+                'author-emails.yaml',
+            ))
+            ->[0]
+            ;
 
         my $_map_it = sub {
             my ($canonical, @alternates) = @_;
@@ -91,12 +92,10 @@ has author_emails => (
             return ( map { $_ => $canonical } @alternates );
         };
 
-        state $map = {
+        return {
             map { $_map_it->($_ => $mapping->{$_}->flatten) }
             $mapping->keys->flatten
         };
-
-        return $map;
     },
 );
 
