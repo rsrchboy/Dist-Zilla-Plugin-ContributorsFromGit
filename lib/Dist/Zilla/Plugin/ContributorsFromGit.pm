@@ -47,27 +47,6 @@ has contributor_list => (
     },
 );
 
-=attr contributor_emails
-
-This is an hash of additional emails that may be found from time to time in
-git commit logs mapped back to the author's 'canonical' author email.
-Generally speaking, the 'canonical email' will be the author's C<@cpan.org>
-address, so that C<metacpan> may properly attribute contributions.
-
-e.g.
-
-    {
-        'Chris Weyl <cweyl@alumni.drew.edu>' => 'Chris Weyl <rsrchboy@cpan.org>',
-        'Chris Weyl <chris.weyl@wps.io>'     => 'Chris Weyl <rsrchboy@cpan.org>',
-        ...
-    }
-
-Note that this attribute is *read-only*; its contents are loaded from
-C<share/author-emails.yaml>. You are encouraged to fork and send a pull
-request if you'd like to add any email mappings of your own.
-
-=cut
-
 has contributor_emails => (
     is       => 'lazy',
     isa      => HashRef[Str],
@@ -176,15 +155,51 @@ added if it is not found.  However, your L<Pod::Weaver> config (aka
 c<weaver.ini>) must include the
 L<Contributors|Pod::Weaver::Section::Contributors> section plugin.
 
+=head2 Dist::Zilla Phase
+
 This plugin runs during the L<BeforeBuild|Dist::Zilla::Role::BeforeBuild>
 phase.
 
+=head2 Metadata Keys
+
 The list of contributors is also added to distribution metadata under the custom
-C<x_contributors> key.
+C<x_contributors> key.  (e.g. in C<META.yml>, C<META.json>, etc)
 
 If you have duplicate contributors because of differences in committer name
 or email you can use a C<.mailmap> file to canonicalize contributor names
 and emails.  See L<git help shortlog|git-shortlog(1)> for details.
+
+=head1 METACPAN CONTRIBUTOR MATCHING
+
+L<MetaCPAN|http://metacpan.org> will attempt to match a contributor address
+back to a PAUSE account.  However, it (currently) can only do that if the
+contributor's email address is their C<PAUSEID@cpan.org> address.  There are
+two mechanisms for helping to resolve this, if your commits are not using this
+address.
+
+Both of these approaches have pros and cons that have been discussed at
+levels nearing the heat brought to any discussion of religion, homosexuality,
+or Chief O'Brien's actual rank at any ST:TNG convention.  However, they both
+have the advantage of *working*, and through different modes of action.  You
+are free to use one, both or neither.  These are only important if you're not
+committing with your C<@cpan.org> email address B<and> want the MetaCPAN to
+link to your author page from the page of the package you contributed to.
+
+=head2 Using a .mailmap file
+
+See C<git help shortlog> for help on how to use this.  A C<.mailmap> file must
+be maintained in each repository using it.
+
+=head2 Globally, via the authors mapping
+
+This package contains a YAML file containing a mapping of C<@cpan.org> author
+addresses; this list is consulted while building the contributors list, and
+can be used to replace a non-cpan.org address with one.
+
+To add to or modify this mapping, please feel free to fork, add your alternate
+email addresses to C<share/author-emails.yaml>, and submit a pull-request for
+inclusion.  It'll be merged and released; as various authors update their set
+of installed modules and cut new releases, the mapping will appear.
 
 =head1 SEE ALSO
 
