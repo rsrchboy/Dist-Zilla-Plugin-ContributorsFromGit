@@ -26,9 +26,6 @@ with
     'Dist::Zilla::Role::MetaProvider',
     ;
 
-# debugging...
-#use Smart::Comments '###';
-
 has contributor_list => (
     is      => 'lazy',
     isa     => 'ArrayRef[Str]',
