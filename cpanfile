@@ -3,17 +3,17 @@ requires "Dist::Zilla::Role::MetaProvider" => "0";
 requires "Dist::Zilla::Role::RegisterStash" => "0";
 requires "Dist::Zilla::Stash::PodWeaver" => "0";
 requires "Encode" => "0";
+requires "File::ShareDir::ProjectDistDir" => "0";
 requires "File::Which" => "0";
 requires "IPC::System::Simple" => "0";
 requires "List::AllUtils" => "0";
-requires "Moose" => "0";
-requires "MooseX::AttributeShortcuts" => "0.015";
-requires "MooseX::Types::Moose" => "0";
-requires "Syntax::Keyword::Junction" => "0";
+requires "Path::Class" => "0";
+requires "Reindeer" => "0";
+requires "YAML::Tiny" => "0";
 requires "aliased" => "0";
 requires "autobox::Core" => "0";
+requires "autobox::Junctions" => "0";
 requires "autodie" => "0";
-requires "namespace::autoclean" => "0";
 requires "perl" => "v5.10.0";
 requires "utf8" => "0";
 
@@ -23,7 +23,6 @@ on 'test' => sub {
   requires "File::chdir" => "0";
   requires "IO::Handle" => "0";
   requires "IPC::Open3" => "0";
-  requires "Path::Class" => "0";
   requires "Test::CheckDeps" => "0.010";
   requires "Test::DZil" => "0";
   requires "Test::More" => "0.94";
@@ -35,6 +34,7 @@ on 'test' => sub {
 
 on 'configure' => sub {
   requires "ExtUtils::MakeMaker" => "6.30";
+  requires "File::ShareDir::Install" => "0.03";
 };
 
 on 'develop' => sub {

@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 # VERSION
 
-This document describes version 0.008 of Dist::Zilla::Plugin::ContributorsFromGit - released April 07, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.009 of Dist::Zilla::Plugin::ContributorsFromGit - released April 08, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 # SYNOPSIS
 
@@ -58,7 +58,8 @@ e.g.
         ...
     }
 
-Note that this attribute is \*read-only\*; __please__ fork and send a pull
+Note that this attribute is \*read-only\*; its contents are loaded from
+`share/author-emails.yaml`. __please__ fork and send a pull
 request if you'd like to add additional mappings.  This is highly
 encouraged. :)
 
