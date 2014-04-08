@@ -38,10 +38,11 @@ has contributor_list => (
 
         ### and get our list from git, filtering: "@authors"
         my @contributors = uniq
-            map   { $self->author_emails->{$_} // $_    }
-            grep  { $_ ne 'Your Name <you@example.com>' }
-            grep  { @authors->none eq $_                }
-            apply { chomp; s/\s*\d+\s*//; $_ = decode_utf8($_) }
+            map  { $self->author_emails->{$_} // $_    }
+            grep { $_ ne 'Your Name <you@example.com>' }
+            grep { @authors->none eq $_                }
+            map  { decode_utf8($_)                     }
+            map  { chomp; s/^\s*\d+\s*//; $_           }
             `git shortlog -s -e`
             ;
 
