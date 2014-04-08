@@ -65,9 +65,8 @@ e.g.
     }
 
 Note that this attribute is *read-only*; its contents are loaded from
-C<share/author-emails.yaml>. B<please> fork and send a pull
-request if you'd like to add additional mappings.  This is highly
-encouraged. :)
+C<share/author-emails.yaml>. You are encouraged to fork and send a pull
+request if you'd like to add any email mappings of your own.
 
 =cut
 
