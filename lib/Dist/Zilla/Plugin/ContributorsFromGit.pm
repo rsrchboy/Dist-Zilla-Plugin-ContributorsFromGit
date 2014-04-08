@@ -35,11 +35,11 @@ has contributor_list => (
 
         ### and get our list from git, filtering: "@authors"
         my @contributors = uniq
-            map  { $self->author_emails->{$_} // $_    }
-            grep { $_ ne 'Your Name <you@example.com>' }
-            grep { @authors->none eq $_                }
-            map  { decode_utf8($_)                     }
-            map  { chomp; s/^\s*\d+\s*//; $_           }
+            map  { $self->contributor_emails->{$_} // $_ }
+            grep { $_ ne 'Your Name <you@example.com>'   }
+            grep { @authors->none eq $_                  }
+            map  { decode_utf8($_)                       }
+            map  { chomp; s/^\s*\d+\s*//; $_             }
             `git shortlog -s -e`
             ;
 
@@ -47,7 +47,7 @@ has contributor_list => (
     },
 );
 
-=attr author_emails
+=attr contributor_emails
 
 This is an hash of additional emails that may be found from time to time in
 git commit logs mapped back to the author's 'canonical' author email.
@@ -68,7 +68,7 @@ request if you'd like to add any email mappings of your own.
 
 =cut
 
-has author_emails => (
+has contributor_emails => (
     is       => 'lazy',
     isa      => HashRef[Str],
     init_arg => undef,
