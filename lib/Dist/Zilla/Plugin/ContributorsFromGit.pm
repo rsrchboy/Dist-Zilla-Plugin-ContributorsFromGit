@@ -26,7 +26,7 @@ with
     'Dist::Zilla::Role::MetaProvider',
     ;
 
-has contributor_list => (
+has _contributor_list => (
     is      => 'lazy',
     isa     => 'ArrayRef[Str]',
     builder => sub {
@@ -35,7 +35,7 @@ has contributor_list => (
 
         ### and get our list from git, filtering: "@authors"
         my @contributors = uniq
-            map  { $self->contributor_emails->{$_} // $_ }
+            map  { $self->_contributor_emails->{$_} // $_ }
             grep { $_ ne 'Your Name <you@example.com>'   }
             grep { @authors->none eq $_                  }
             map  { decode_utf8($_)                       }
@@ -47,7 +47,7 @@ has contributor_list => (
     },
 );
 
-has contributor_emails => (
+has _contributor_emails => (
     is       => 'lazy',
     isa      => HashRef[Str],
     init_arg => undef,
@@ -93,7 +93,7 @@ sub before_build {
     do { $stash = PodWeaver->new; $self->_register_stash('%PodWeaver', $stash) }
         unless defined $stash;
     my $config       = $stash->_config;
-    my @contributors = $self->contributor_list->flatten;
+    my @contributors = $self->_contributor_list->flatten;
 
     my $i = 0;
     do { $config->{"Contributors.contributors[$i]"} = $_; $i++ }
@@ -114,7 +114,7 @@ sub before_build {
 
 sub metadata {
     my $self = shift @_;
-    my $list = $self->contributor_list;
+    my $list = $self->_contributor_list;
     return @$list ? { 'x_contributors' => $list } : {};
 }
 
