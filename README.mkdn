@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 # VERSION
 
-This document describes version 0.009 of Dist::Zilla::Plugin::ContributorsFromGit - released April 08, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.010 of Dist::Zilla::Plugin::ContributorsFromGit - released April 08, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 # SYNOPSIS
 
@@ -35,37 +35,51 @@ added if it is not found.  However, your [Pod::Weaver](https://metacpan.org/pod/
 c<weaver.ini>) must include the
 [Contributors](https://metacpan.org/pod/Pod::Weaver::Section::Contributors) section plugin.
 
+## Dist::Zilla Phase
+
 This plugin runs during the [BeforeBuild](https://metacpan.org/pod/Dist::Zilla::Role::BeforeBuild)
 phase.
 
+## Metadata Keys
+
 The list of contributors is also added to distribution metadata under the custom
-`x_contributors` key.
-
-# ATTRIBUTES
-
-## author\_emails
-
-This is an hash of additional emails that may be found from time to time in
-git commit logs mapped back to the author's 'canonical' author email.
-Generally speaking, the 'canonical email' will be the author's `@cpan.org`
-address, so that `metacpan` may properly attribute contributions.
-
-e.g.
-
-    {
-        'Chris Weyl <cweyl@alumni.drew.edu>' => 'Chris Weyl <rsrchboy@cpan.org>',
-        'Chris Weyl <chris.weyl@wps.io>'     => 'Chris Weyl <rsrchboy@cpan.org>',
-        ...
-    }
-
-Note that this attribute is \*read-only\*; its contents are loaded from
-`share/author-emails.yaml`. __please__ fork and send a pull
-request if you'd like to add additional mappings.  This is highly
-encouraged. :)
+`x_contributors` key.  (e.g. in `META.yml`, `META.json`, etc)
 
 If you have duplicate contributors because of differences in committer name
 or email you can use a `.mailmap` file to canonicalize contributor names
 and emails.  See [git help shortlog](http://man.he.net/man1/git-shortlog) for details.
+
+# METACPAN CONTRIBUTOR MATCHING
+
+[MetaCPAN](http://metacpan.org) will attempt to match a contributor address
+back to a PAUSE account.  However, it (currently) can only do that if the
+contributor's email address is their `PAUSEID@cpan.org` address.  There are
+two mechanisms for helping to resolve this, if your commits are not using this
+address.
+
+Both of these approaches have pros and cons that have been discussed at
+levels nearing the heat brought to any discussion of religion, homosexuality,
+or Chief O'Brien's actual rank at any ST:TNG convention.  However, they both
+have the advantage of \*working\*, and through different modes of action.  You
+are free to use one, both or neither.  These are only important if you're not
+committing with your `@cpan.org` email address __and__ want the MetaCPAN to
+link to your author page from the page of the package you contributed to.
+
+## Using a .mailmap file
+
+See `git help shortlog` for help on how to use this.  A `.mailmap` file must
+be maintained in each repository using it.
+
+## Globally, via the authors mapping
+
+This package contains a YAML file containing a mapping of `@cpan.org` author
+addresses; this list is consulted while building the contributors list, and
+can be used to replace a non-cpan.org address with one.
+
+To add to or modify this mapping, please feel free to fork, add your alternate
+email addresses to `share/author-emails.yaml`, and submit a pull-request for
+inclusion.  It'll be merged and released; as various authors update their set
+of installed modules and cut new releases, the mapping will appear.
 
 # SEE ALSO
 

@@ -25,6 +25,7 @@ on 'test' => sub {
   requires "IPC::Open3" => "0";
   requires "Test::CheckDeps" => "0.010";
   requires "Test::DZil" => "0";
+  requires "Test::Moose::More" => "0";
   requires "Test::More" => "0.94";
   requires "Test::TempDir" => "0";
   requires "lib" => "0";
