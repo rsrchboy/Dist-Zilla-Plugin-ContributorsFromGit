@@ -122,7 +122,7 @@ __PACKAGE__->meta->make_immutable;
 !!42;
 __END__
 
-=for :stopwords zilla BeforeBuild metacpan shortlog committer
+=for :stopwords zilla BeforeBuild metacpan shortlog committer mailmap
 
 =for Pod::Coverage before_build metadata
 
