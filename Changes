@@ -2,6 +2,9 @@ Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
 {{$NEXT}}
 
+0.011     2014-04-15 22:25:59 PDT-0700
+	* bump Reindeer prereq version to 0.017, to avoid Try::Tiny pitfalls
+
 0.010     2014-04-08 17:06:02 PDT-0700
 	* add public interface validation tests
 	* make all our attributes "private"
