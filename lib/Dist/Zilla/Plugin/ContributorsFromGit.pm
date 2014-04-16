@@ -5,7 +5,7 @@ package Dist::Zilla::Plugin::ContributorsFromGit;
 use utf8;
 use v5.10;
 
-use Reindeer;
+use Reindeer 0.017;
 use Encode qw(decode_utf8);
 use autobox::Core;
 use autobox::Junctions;
