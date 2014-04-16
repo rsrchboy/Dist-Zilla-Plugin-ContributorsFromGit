@@ -7,10 +7,6 @@ perl:
    - "5.18"
 
 install:
-   # git bits sometimes needed...
-   - git config user.name 'Travis-CI'
-   - git config user.email 'travis@nowhere.dne'
-
    # avoid dzil iff our perl < v5.10
    - perl -e '$^V lt v5.10' && { cpanm --installdeps . ; exit 0 ; }
 
