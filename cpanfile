@@ -1,3 +1,4 @@
+requires "Dist::Zilla" => "5.013";
 requires "Dist::Zilla::Role::BeforeBuild" => "0";
 requires "Dist::Zilla::Role::MetaProvider" => "0";
 requires "Dist::Zilla::Role::RegisterStash" => "0";
