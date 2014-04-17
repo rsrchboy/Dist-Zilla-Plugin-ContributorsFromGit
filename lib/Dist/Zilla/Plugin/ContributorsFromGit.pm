@@ -10,7 +10,7 @@ use Encode qw(decode_utf8);
 use autobox::Core;
 use autobox::Junctions;
 use File::Which 'which';
-use List::AllUtils qw{ apply max uniq };
+use List::AllUtils qw{ max uniq };
 use File::ShareDir::ProjectDistDir;
 use YAML::Tiny;
 use Path::Class;
@@ -19,6 +19,9 @@ use autodie 'system';
 use IPC::System::Simple ( ); # explict dep for autodie system
 
 use aliased 'Dist::Zilla::Stash::PodWeaver';
+
+# debugging...
+use Smart::Comments '###';
 
 with
     'Dist::Zilla::Role::BeforeBuild',
@@ -101,11 +104,12 @@ sub before_build {
 
     # add contributor names as stopwords
     $i = 0;
-    my @stopwords = uniq
-        apply { split / /        }
-        apply { /^(.*) <.*$/; $1 }
+    my @stopwords = uniq sort
+        map { (split / /)      }
+        map { /^(.*) <.*$/; $1 }
         @contributors
         ;
+    ### @stopwords
     do { $config->{"StopWords.include[$i]"} = $_; $i++ }
         for @stopwords;
 
