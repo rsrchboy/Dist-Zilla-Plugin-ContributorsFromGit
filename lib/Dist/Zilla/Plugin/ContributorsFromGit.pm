@@ -192,6 +192,13 @@ If you have duplicate contributors because of differences in committer name
 or email you can use a C<.mailmap> file to canonicalize contributor names
 and emails.  See L<git help shortlog|git-shortlog(1)> for details.
 
+=head2 Pod::Weaver::Section::Contributors is OPTIONAL
+
+Note that using the L<Pod::Weaver::Section::Contributors> section is in no way
+mandated or necessitated by this package; if you wish to use it you must
+include the Contributors section in your L<Pod::Weaver> configuration in the
+traditional fashion.
+
 =head1 METACPAN CONTRIBUTOR MATCHING
 
 L<MetaCPAN|http://metacpan.org> will attempt to match a contributor address
