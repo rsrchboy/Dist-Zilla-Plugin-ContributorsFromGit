@@ -129,7 +129,7 @@ sub before_build {
     };
 
     $_append->('Contributors.contributors' => $self->_contributor_list->flatten);
-    $_append->('StopWords.include'         => $self->_stopwords->flatten);
+    $_append->('-StopWords.include'        => $self->_stopwords->flatten);
 
     ### $config
     return;
