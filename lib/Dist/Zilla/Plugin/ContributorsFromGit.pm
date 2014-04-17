@@ -230,4 +230,6 @@ L<Pod::Weaver::Section::Contributors>
 
 L<Dist::Zilla::Stash::PodWeaver>
 
+L<http://www.dagolden.com/index.php/1921/how-im-using-distzilla-to-give-credit-to-contributors/>
+
 =cut
