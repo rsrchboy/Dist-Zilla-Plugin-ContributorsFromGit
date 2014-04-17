@@ -20,9 +20,6 @@ use IPC::System::Simple ( ); # explict dep for autodie system
 
 use aliased 'Dist::Zilla::Stash::PodWeaver';
 
-# debugging...
-use Smart::Comments '###';
-
 with
     'Dist::Zilla::Role::BeforeBuild',
     'Dist::Zilla::Role::RegisterStash',
@@ -46,7 +43,7 @@ has _contributor_list => (
             `git shortlog -s -e`
             ;
 
-        return \@contributors;
+        return [ sort @contributors ];
     },
 );
 
@@ -98,21 +95,25 @@ sub before_build {
     my $config       = $stash->_config;
     my @contributors = $self->_contributor_list->flatten;
 
-    my $i = 0;
+    my $i = -1;
+    do { $i++ } while exists $config->{"Contributors.contributors[$i]"};
     do { $config->{"Contributors.contributors[$i]"} = $_; $i++ }
         for @contributors;
 
     # add contributor names as stopwords
-    $i = 0;
     my @stopwords = uniq sort
         map { (split / /)      }
         map { /^(.*) <.*$/; $1 }
         @contributors
         ;
+
     ### @stopwords
+    $i = -1;
+    do { $i++ } while exists $config->{"StopWords.include[$i]"};
     do { $config->{"StopWords.include[$i]"} = $_; $i++ }
         for @stopwords;
 
+    ### $config
     return;
 }
 
