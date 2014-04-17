@@ -5,6 +5,11 @@ use utf8;
 use autodie 'system';
 use autobox::Core;
 
+BEGIN {
+    $ENV{GIT_AUTHOR_EMAIL}    = 'Test Ing <test@test.ing>';
+    $ENV{GIT_COMMITTER_EMAIL} = 'Test Ing <test@test.ing>';
+}
+
 use Test::More;
 use Test::TempDir 'scratch';
 use Test::DZil;
@@ -18,9 +23,6 @@ use lib 't/lib';
 
 plan skip_all => 'git not found'
     unless which 'git';
-
-$ENV{GIT_AUTHOR_EMAIL}    = 'Test Ing <test@test.ing>';
-$ENV{GIT_COMMITTER_EMAIL} = 'Test Ing <test@test.ing>';
 
 my $ds        = scratch;
 my $dist_root = $ds->base;
