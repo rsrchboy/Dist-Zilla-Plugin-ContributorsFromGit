@@ -1,7 +1,5 @@
 Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
-{{$NEXT}}
-
 0.012     2014-04-17 14:45:19 PDT-0700
 	* properly generate our stopwords list
 

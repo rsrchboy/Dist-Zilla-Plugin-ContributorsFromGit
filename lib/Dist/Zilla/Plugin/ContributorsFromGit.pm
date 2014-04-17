@@ -1,4 +1,18 @@
+#
+# This file is part of Dist-Zilla-Plugin-ContributorsFromGit
+#
+# This software is Copyright (c) 2012 by Chris Weyl.
+#
+# This is free software, licensed under:
+#
+#   The GNU Lesser General Public License, Version 2.1, February 1999
+#
 package Dist::Zilla::Plugin::ContributorsFromGit;
+BEGIN {
+  $Dist::Zilla::Plugin::ContributorsFromGit::AUTHORITY = 'cpan:RSRCHBOY';
+}
+# git description: 0.011-7-g11b50fe
+$Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.012';
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
@@ -143,11 +157,23 @@ sub metadata {
 
 __PACKAGE__->meta->make_immutable;
 !!42;
+
 __END__
 
-=for :stopwords zilla BeforeBuild metacpan shortlog committer mailmap
+=pod
 
-=for Pod::Coverage before_build metadata
+=encoding UTF-8
+
+=for :stopwords Chris Weyl David Golden Graham Knop Randy Stauner Tatsuhiko Miyagawa zilla
+BeforeBuild metacpan shortlog committer mailmap
+
+=head1 NAME
+
+Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from the list of git authors
+
+=head1 VERSION
+
+This document describes version 0.012 of Dist::Zilla::Plugin::ContributorsFromGit - released April 17, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
@@ -192,6 +218,8 @@ If you have duplicate contributors because of differences in committer name
 or email you can use a C<.mailmap> file to canonicalize contributor names
 and emails.  See L<git help shortlog|git-shortlog(1)> for details.
 
+=for Pod::Coverage before_build metadata
+
 =head1 METACPAN CONTRIBUTOR MATCHING
 
 L<MetaCPAN|http://metacpan.org> will attempt to match a contributor address
@@ -226,8 +254,66 @@ of installed modules and cut new releases, the mapping will appear.
 
 =head1 SEE ALSO
 
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
 L<Pod::Weaver::Section::Contributors>
 
+=item *
+
 L<Dist::Zilla::Stash::PodWeaver>
+
+=back
+
+=head1 SOURCE
+
+The development version is on github at L<http://https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit>
+and may be cloned from L<git://https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git>
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
+=head1 AUTHOR
+
+Chris Weyl <cweyl@alumni.drew.edu>
+
+=head1 CONTRIBUTORS
+
+=over 4
+
+=item *
+
+David Golden <dagolden@cpan.org>
+
+=item *
+
+Graham Knop <haarg@haarg.org>
+
+=item *
+
+Randy Stauner <randy@magnificent-tears.com>
+
+=item *
+
+Tatsuhiko Miyagawa <miyagawa@bulknews.net>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2012 by Chris Weyl.
+
+This is free software, licensed under:
+
+  The GNU Lesser General Public License, Version 2.1, February 1999
 
 =cut
