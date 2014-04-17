@@ -76,6 +76,25 @@ has _contributor_emails => (
     },
 );
 
+has _stopwords => (
+    is => 'lazy',
+    isa => ArrayRef[Str],
+    init_arg => undef,
+
+    builder => sub {
+        my $self = shift @_;
+
+        # break contributor names into a stopwords-suitable list
+        my @stopwords =
+            map { (split / /)      }
+            map { /^(.*) <.*$/; $1 }
+            $self->_contributor_list->flatten
+            ;
+
+        return [ uniq sort @stopwords ];
+    },
+);
+
 sub before_build {
     my $self = shift @_;
 
@@ -92,26 +111,21 @@ sub before_build {
     my $stash   = $self->zilla->stash_named('%PodWeaver');
     do { $stash = PodWeaver->new; $self->_register_stash('%PodWeaver', $stash) }
         unless defined $stash;
-    my $config       = $stash->_config;
-    my @contributors = $self->_contributor_list->flatten;
+    my $config = $stash->_config;
 
-    my $i = -1;
-    do { $i++ } while exists $config->{"Contributors.contributors[$i]"};
-    do { $config->{"Contributors.contributors[$i]"} = $_; $i++ }
-        for @contributors;
+    my $_append = sub {
+        my ($key, @values) = @_;
 
-    # add contributor names as stopwords
-    my @stopwords = uniq sort
-        map { (split / /)      }
-        map { /^(.*) <.*$/; $1 }
-        @contributors
-        ;
+        my $i = -1;
+        do { $i++ } while exists $config->{$key."[$i]"};
+        do { $config->{$key."[$i]"} = $_; $i++ }
+            for @values;
 
-    ### @stopwords
-    $i = -1;
-    do { $i++ } while exists $config->{"StopWords.include[$i]"};
-    do { $config->{"StopWords.include[$i]"} = $_; $i++ }
-        for @stopwords;
+        return;
+    };
+
+    $_append->('Contributors.contributors' => $self->_contributor_list->flatten);
+    $_append->('StopWords.include'         => $self->_stopwords->flatten);
 
     ### $config
     return;
