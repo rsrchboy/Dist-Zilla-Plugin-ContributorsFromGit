@@ -14,6 +14,10 @@ use File::Which 'which';
 use IPC::System::Simple (); # explicit dep for autodie system
 use Path::Class;
 
+use Encode qw(encode decode_utf8);
+use Term::Encoding 'term_encoding';
+my $term_encoding = term_encoding();
+
 use lib 't/lib';
 
 plan skip_all => 'git not found'
@@ -28,7 +32,10 @@ my $dist_root = $ds->base;
 my @AUTHORS = (
     'Some One <one@some.org>',
     'Another One <two@some.org>',
-    'James "宮川達彦" Salmoń <woo@bip.com>',
+    # encode the non-ascii author so that it survives printing twice
+    # (once via system() and once via git)
+    encode($term_encoding,
+        decode_utf8 'James 宮川達彦 Salmoń <woo@bip.com>'),
 );
 
 {
