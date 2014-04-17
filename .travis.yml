@@ -10,6 +10,10 @@ before_install:
     # gotta love failing pod tests blowing everything up...
     - cpanm -q TAP::Harness::Restricted || { cat ~/.cpanm/build.log ; false ; }
 
+    # git bits sometimes needed...  Again?!
+    - git config user.name 'Travis-CI'
+    - git config user.email 'travis@nowhere.dne'
+
     # not so much install our package as all its prereqs
     - HARNESS_SUBCLASS=TAP::Harness::Restricted cpanm -q --installdeps . || { cat ~/.cpanm/build.log ; false ; }
 
