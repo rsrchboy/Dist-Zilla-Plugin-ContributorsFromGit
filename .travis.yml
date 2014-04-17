@@ -11,8 +11,8 @@ before_install:
     - cpanm -q TAP::Harness::Restricted || { cat ~/.cpanm/build.log ; false ; }
 
     # git bits sometimes needed...  Again?!
-    - git config user.name 'Travis-CI'
-    - git config user.email 'travis@nowhere.dne'
+    - git config --global user.name 'Travis-CI'
+    - git config --global user.email 'travis@nowhere.dne'
 
     # not so much install our package as all its prereqs
     - HARNESS_SUBCLASS=TAP::Harness::Restricted cpanm -q --installdeps . || { cat ~/.cpanm/build.log ; false ; }
