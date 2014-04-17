@@ -107,12 +107,16 @@ sub before_build {
     # XXX we should also check here that we're in a git repo, but I'm going to
     # leave that for the git stash (when it's not vaporware)
 
-    ### get our stash, config...
+    ### get our stash...
     my $stash   = $self->zilla->stash_named('%PodWeaver');
     do { $stash = PodWeaver->new; $self->_register_stash('%PodWeaver', $stash) }
         unless defined $stash;
+
+    ### ...and config...
     my $config = $stash->_config;
 
+    # helper sub to keep us from clobbering existing values, until (and if):
+    # https://github.com/rwstauner/Dist-Zilla-Role-Stash-Plugins/pull/1
     my $_append = sub {
         my ($key, @values) = @_;
 
