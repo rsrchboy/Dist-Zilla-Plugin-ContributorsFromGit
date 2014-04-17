@@ -37,7 +37,7 @@ has _contributor_list => (
         my @contributors = uniq
             map  { $self->_contributor_emails->{$_} // $_ }
             grep { $_ ne 'Your Name <you@example.com>'   }
-            grep { @authors->none eq $_                  }
+            grep { [ map { lc } @authors ]->none eq lc   }
             map  { decode_utf8($_)                       }
             map  { chomp; s/^\s*\d+\s*//; $_             }
             `git shortlog -s -e`
