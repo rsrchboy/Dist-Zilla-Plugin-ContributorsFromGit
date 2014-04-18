@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 # VERSION
 
-This document describes version 0.012 of Dist::Zilla::Plugin::ContributorsFromGit - released April 17, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.013 of Dist::Zilla::Plugin::ContributorsFromGit - released April 17, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 # SYNOPSIS
 
@@ -49,6 +49,13 @@ If you have duplicate contributors because of differences in committer name
 or email you can use a `.mailmap` file to canonicalize contributor names
 and emails.  See [git help shortlog](http://man.he.net/man1/git-shortlog) for details.
 
+## Pod::Weaver::Section::Contributors is OPTIONAL
+
+Note that using the [Pod::Weaver::Section::Contributors](https://metacpan.org/pod/Pod::Weaver::Section::Contributors) section is in no way
+mandated or necessitated by this package; if you wish to use it you must
+include the Contributors section in your [Pod::Weaver](https://metacpan.org/pod/Pod::Weaver) configuration in the
+traditional fashion.
+
 # METACPAN CONTRIBUTOR MATCHING
 
 [MetaCPAN](http://metacpan.org) will attempt to match a contributor address
@@ -87,6 +94,7 @@ Please see those modules/websites for more information related to this module.
 
 - [Pod::Weaver::Section::Contributors](https://metacpan.org/pod/Pod::Weaver::Section::Contributors)
 - [Dist::Zilla::Stash::PodWeaver](https://metacpan.org/pod/Dist::Zilla::Stash::PodWeaver)
+- [http://www.dagolden.com/index.php/1921/how-im-using-distzilla-to-give-credit-to-contributors/](http://www.dagolden.com/index.php/1921/how-im-using-distzilla-to-give-credit-to-contributors/)
 
 # SOURCE
 
@@ -108,6 +116,7 @@ Chris Weyl <cweyl@alumni.drew.edu>
 
 # CONTRIBUTORS
 
+- Brendan Byrd <Perl@ResonatorSoft.org>
 - David Golden <dagolden@cpan.org>
 - Graham Knop <haarg@haarg.org>
 - Randy Stauner <randy@magnificent-tears.com>

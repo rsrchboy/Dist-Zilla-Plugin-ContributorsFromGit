@@ -2,6 +2,14 @@ Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
 {{$NEXT}}
 
+0.013     2014-04-17 19:21:09 PDT-0700
+	* properly *pass* our stopwords list to the PW StopWords **plugin**
+	* document with more vigor that the PW Contributors section is optional,
+	  and not required in any way by this plugin (issue #12)
+	* make Dist::Zilla 5.013 the minimum required, to help resolve
+	  META.{yml,json} problems (issue #9)
+	* make author matching case-insensitive (closes #6, closes #11)
+
 0.012     2014-04-17 14:45:19 PDT-0700
 	* properly generate our stopwords list
 
