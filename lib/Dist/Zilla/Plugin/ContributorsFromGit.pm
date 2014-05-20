@@ -11,7 +11,7 @@ use autobox::Core;
 use autobox::Junctions;
 use File::Which 'which';
 use List::AllUtils qw{ max uniq };
-use File::ShareDir::ProjectDistDir;
+use File::ShareDir qw/ dist_dir /;
 use YAML::Tiny;
 use Path::Class;
 

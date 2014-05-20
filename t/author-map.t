@@ -2,6 +2,12 @@ use strict;
 use warnings;
 use utf8;
 
+use Test::File::ShareDir -share => {
+    -dist => {
+        'Dist-Zilla-Plugin-ContributorsFromGit' => 'share',
+    },
+};
+
 use autodie 'system';
 use autobox::Core;
 
