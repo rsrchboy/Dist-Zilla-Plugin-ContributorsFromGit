@@ -13,6 +13,7 @@ use File::chdir;
 use File::Which 'which';
 use IPC::System::Simple (); # explicit dep for autodie system
 use Path::Class;
+use Path::Tiny;
 
 use lib 't/lib';
 
@@ -34,19 +35,22 @@ my @AUTHORS = (
 
 {
     local $CWD = "$dist_root";
-    system $_ for
-        'git init',
-        'touch foo && git add foo',
-        "git commit --author '$AUTHORS[0]' -m 'one'",
-        'touch bar && git add bar',
-        "git commit --author '$AUTHORS[1]' -m 'two'",
-        'touch baz && git add baz',
-        "git commit --author '$AUTHORS[2]' -m 'three'",
-        'touch biff && git add biff',
-        "git commit --author '$AUTHORS[3]' -m 'four'",
-        'touch aack && git add aack',
-        q{git commit --author 'Your Name <you@example.com>' -m 'two'},
-        ;
+    system 'git init';
+    path('foo')->touch;
+    system 'git add foo';
+    system qq{git commit --author "$AUTHORS[0]" -m "one"};
+    path('bar')->touch;
+    system 'git add bar';
+    system qq{git commit --author "$AUTHORS[1]" -m "two"};
+    path('baz')->touch;
+    system 'git add baz';
+    system qq{git commit --author "$AUTHORS[2]" -m "three"};
+    path('biff')->touch;
+    system 'git add biff';
+    system qq{git commit --author "$AUTHORS[3]" -m "four"};
+    path('aack')->touch;
+    system 'git add aack';
+    system 'git commit --author "Your Name <you@example.com>" -m "two"';
 }
 
 my $STASH_NAME = '%PodWeaver';
