@@ -36,8 +36,10 @@ my @AUTHORS = (
     # encode the non-ascii author so that it survives printing twice
     # (once via system() and once via git)
     encode($term_encoding,
+        decode_utf8 'James \"宮川達彦\" Salmoń <woo@bip.com>'),
+    # same string, but without the escapes that git removes
+    encode($term_encoding,
         decode_utf8 'James "宮川達彦" Salmoń <woo@bip.com>'),
-    # 'James "宮川達彦" Salmoń <woo@bip.com>',
     'E. Xavier Ample <example@EXAMPLE.ORG>'
 );
 
@@ -55,7 +57,7 @@ my @AUTHORS = (
     system qq{git commit --author "$AUTHORS[2]" -m "three"};
     path('biff')->touch;
     system 'git add biff';
-    system qq{git commit --author "$AUTHORS[3]" -m "four"};
+    system qq{git commit --author "$AUTHORS[4]" -m "four"};
     path('aack')->touch;
     system 'git add aack';
     system 'git commit --author "Your Name <you@example.com>" -m "two"';
@@ -81,7 +83,7 @@ $tzil->release;
 
 is_deeply
     [ sort @{$tzil->distmeta->{x_contributors}} ],
-    [ sort @AUTHORS[0..2] ],
+    [ sort @AUTHORS[0,1,3] ],
     "x_contributors metadata"
     ;
 
@@ -95,7 +97,7 @@ my $cleanup_ok = is_deeply
         grep { /^Contributors\.contributors\[\d+\]/ }
         $stash->_config->keys->flatten
     ],
-    [ sort @AUTHORS[0..2] ],
+    [ sort @AUTHORS[0,1,3] ],
     'contributors and git authors match up',
     ;
 
