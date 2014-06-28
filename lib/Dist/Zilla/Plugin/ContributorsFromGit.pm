@@ -31,6 +31,9 @@ has _contributor_list => (
     isa     => 'ArrayRef[Str]',
     builder => sub {
         my $self = shift @_;
+
+        return [] unless `git show-ref HEAD`;
+
         my @authors = $self->zilla->authors->flatten;
 
         ### and get our list from git, filtering: "@authors"
