@@ -1,7 +1,5 @@
 Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
-{{$NEXT}}
-
 0.014     2014-07-05 15:28:48 PDT-0700
 	* merge pull request #20 (additional alternate author information)
 
