@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 # VERSION
 
-This document describes version 0.013 of Dist::Zilla::Plugin::ContributorsFromGit - released April 17, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.014 of Dist::Zilla::Plugin::ContributorsFromGit - released July 05, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 # SYNOPSIS
 
@@ -69,7 +69,7 @@ levels nearing the heat brought to any discussion of religion, homosexuality,
 or Chief O'Brien's actual rank at any ST:TNG convention.  However, they both
 have the advantage of \*working\*, and through different modes of action.  You
 are free to use one, both or neither.  These are only important if you're not
-committing with your `@cpan.org` email address __and__ want the MetaCPAN to
+committing with your `@cpan.org` email address **and** want the MetaCPAN to
 link to your author page from the page of the package you contributed to.
 
 ## Using a .mailmap file
@@ -114,11 +114,29 @@ feature.
 
 Chris Weyl <cweyl@alumni.drew.edu>
 
+## I'm a material boy in a material world
+
+<div>
+    <a href="https://www.gittip.com/RsrchBoy/"><img src="https://raw.githubusercontent.com/gittip/www.gittip.com/master/www/assets/%25version/logo.png" /></a>
+    <a href="http://bit.ly/rsrchboys-wishlist"><img src="http://wps.io/wp-content/uploads/2014/05/amazon_wishlist.resized.png" /></a>
+    <a href="https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2FDist-Zilla-Plugin-ContributorsFromGit&title=RsrchBoy's%20CPAN%20Dist-Zilla-Plugin-ContributorsFromGit&tags=%22RsrchBoy's%20Dist-Zilla-Plugin-ContributorsFromGit%20in%20the%20CPAN%22"><img src="http://api.flattr.com/button/flattr-badge-large.png" /></a>
+</div>
+
+Please note **I do not expect to be gittip'ed or flattr'ed for this work**,
+rather **it is simply a very pleasant surprise**. I largely create and release
+works like this because I need them or I find it enjoyable; however, don't let
+that stop you if you feel like it ;)
+
+[Flattr this](https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2FDist-Zilla-Plugin-ContributorsFromGit&title=RsrchBoy&#x27;s%20CPAN%20Dist-Zilla-Plugin-ContributorsFromGit&tags=%22RsrchBoy&#x27;s%20Dist-Zilla-Plugin-ContributorsFromGit%20in%20the%20CPAN%22),
+[gittip me](https://www.gittip.com/RsrchBoy/), or indulge my
+[Amazon Wishlist](http://bit.ly/rsrchboys-wishlist)...  If you so desire.
+
 # CONTRIBUTORS
 
 - Brendan Byrd <Perl@ResonatorSoft.org>
 - David Golden <dagolden@cpan.org>
 - Graham Knop <haarg@haarg.org>
+- Mike Greb <mikegrb@cpan.org>
 - Randy Stauner <randy@magnificent-tears.com>
 - Tatsuhiko Miyagawa <miyagawa@bulknews.net>
 
