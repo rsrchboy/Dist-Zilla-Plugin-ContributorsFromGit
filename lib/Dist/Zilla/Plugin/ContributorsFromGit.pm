@@ -40,7 +40,7 @@ has _contributor_list => (
             grep { [ map { lc } @authors ]->none eq lc   }
             map  { decode_utf8($_)                       }
             map  { chomp; s/^\s*\d+\s*//; $_             }
-            `git shortlog -s -e`
+            `git shortlog -s -e HEAD`
             ;
 
         return [ sort @contributors ];
