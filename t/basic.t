@@ -14,6 +14,13 @@ use File::Which 'which';
 use IPC::System::Simple (); # explicit dep for autodie system
 use Path::Class;
 
+use Test::File::ShareDir -share => {
+    -dist => {
+        'Dist-Zilla-Plugin-ContributorsFromGit' => 'share',
+    },
+};
+
+
 use lib 't/lib';
 
 plan skip_all => 'git not found'
