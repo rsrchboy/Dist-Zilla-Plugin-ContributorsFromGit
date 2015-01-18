@@ -2,6 +2,10 @@ Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
 {{$NEXT}}
 
+0.016     2015-01-18 14:51:27 PST-0800
+	* use Moose vs Reindeer; no need for *all* the antlers right now.
+	  (issue #21)
+
 0.015     2015-01-18 14:37:50 PST-0800
 	* Use Test::File::SD instead of F::SD::ProjectDistDir (thanks yanick!)
 
