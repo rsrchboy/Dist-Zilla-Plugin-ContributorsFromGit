@@ -2,6 +2,9 @@ Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
 {{$NEXT}}
 
+0.015     2015-01-18 14:37:50 PST-0800
+	* Use Test::File::SD instead of F::SD::ProjectDistDir (thanks yanick!)
+
 0.014     2014-07-05 15:28:48 PDT-0700
 	* merge pull request #20 (additional alternate author information)
 

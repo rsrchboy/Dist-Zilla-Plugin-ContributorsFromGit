@@ -4,7 +4,7 @@ requires "Dist::Zilla::Role::MetaProvider" => "0";
 requires "Dist::Zilla::Role::RegisterStash" => "0";
 requires "Dist::Zilla::Stash::PodWeaver" => "0";
 requires "Encode" => "0";
-requires "File::ShareDir::ProjectDistDir" => "0";
+requires "File::ShareDir" => "0";
 requires "File::Which" => "0";
 requires "IPC::System::Simple" => "0";
 requires "List::AllUtils" => "0";
@@ -26,21 +26,25 @@ on 'test' => sub {
   requires "IPC::Open3" => "0";
   requires "Test::CheckDeps" => "0.010";
   requires "Test::DZil" => "0";
+  requires "Test::File::ShareDir" => "0";
   requires "Test::Moose::More" => "0";
   requires "Test::More" => "0.94";
   requires "Test::TempDir" => "0";
   requires "lib" => "0";
+  requires "perl" => "v5.10.0";
   requires "strict" => "0";
   requires "warnings" => "0";
 };
 
 on 'configure' => sub {
-  requires "ExtUtils::MakeMaker" => "6.30";
+  requires "ExtUtils::MakeMaker" => "0";
   requires "File::ShareDir::Install" => "0.06";
+  requires "perl" => "v5.10.0";
 };
 
 on 'develop' => sub {
   requires "Pod::Coverage::TrustPod" => "0";
+  requires "Test::EOL" => "0";
   requires "Test::More" => "0";
   requires "Test::NoTabs" => "0";
   requires "Test::Pod" => "1.41";
