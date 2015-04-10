@@ -28,7 +28,7 @@ plan skip_all => 'git not found'
 $ENV{GIT_AUTHOR_EMAIL}    = 'Test Ing <test@test.ing>';
 $ENV{GIT_COMMITTER_EMAIL} = 'Test Ing <test@test.ing>';
 
-my $dist_root = tempdir; 
+my $dist_root = tempdir;
 
 my @AUTHORS = (
     'Some One <one@some.org>',
