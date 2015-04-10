@@ -1,25 +1,50 @@
+# use the docker/container based infrastructure
+sudo: false
+
 language: perl
 perl:
+   - "5.8"
    - "5.10"
    - "5.12"
    - "5.14"
    - "5.16"
    - "5.18"
+   - "5.20"
+
+matrix:
+   allow_failures:
+      - perl: "5.8"
+
+branches:
+    except:
+        - "release/cpan"
+
+env:
+    - CPANM_OPTS="-q --skip-satisfied --notest"
 
 before_install:
-    # gotta love failing pod tests blowing everything up...
-    - cpanm -q TAP::Harness::Restricted || { cat ~/.cpanm/build.log ; false ; }
+   # git bits sometimes needed...
+   - git config user.name 'Travis-CI'
+   - git config user.email 'travis@nowhere.dne'
 
-    # git bits sometimes needed...  Again?!
-    - git config --global user.name 'Travis-CI'
-    - git config --global user.email 'travis@nowhere.dne'
+   # gotta love failing pod tests blowing everything up...
+   - cpanm $CPANM_OPTS TAP::Harness::Restricted || { cat ~/.cpanm/build.log ; false ; }
+   - export HARNESS_SUBCLASS=TAP::Harness::Restricted
 
-    # not so much install our package as all its prereqs
-    - HARNESS_SUBCLASS=TAP::Harness::Restricted cpanm -q --installdeps . || { cat ~/.cpanm/build.log ; false ; }
+   # Moose installs in parallel quite nicely.
+   - HARNESS_OPTIONS=j8:c cpanm $CPANM_OPTS Moose       || { cat ~/.cpanm/build.log ; false ; }
+   - HARNESS_OPTIONS=j8:c cpanm $CPANM_OPTS Dist::Zilla || { cat ~/.cpanm/build.log ; false ; }
+
+   # for DZP LinkCheck
+   - cpanm $CPANM_OPTS CPANPLUS || { cat ~/.cpanm/build.log ; false ; }
+   - cpanp x
 
 install:
-    # NOOP, really
-    - true
+   # not so much install our package as all its prereqs
+   - dzil authordeps --missing        | cpanm $CPANM_OPTS        || { cat ~/.cpanm/build.log ; false ; }
+   - dzil listdeps --author --missing | cpanm -q --skip-satisfied || { cat ~/.cpanm/build.log ; false ; }
 
 script:
-    - prove -lr t/
+   - export DZSIGN=archive
+   - unset HARNESS_SUBCLASS
+   - dzil test --all
