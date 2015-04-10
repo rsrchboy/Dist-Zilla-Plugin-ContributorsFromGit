@@ -6,9 +6,8 @@ use autodie 'system';
 use autobox::Core;
 
 use Test::More;
-use Test::TempDir 'scratch';
+use Test::TempDir::Tiny;
 use Test::DZil;
-use Directory::Scratch;
 use File::chdir;
 use File::Which 'which';
 use IPC::System::Simple (); # explicit dep for autodie system
@@ -29,8 +28,7 @@ plan skip_all => 'git not found'
 $ENV{GIT_AUTHOR_EMAIL}    = 'Test Ing <test@test.ing>';
 $ENV{GIT_COMMITTER_EMAIL} = 'Test Ing <test@test.ing>';
 
-my $ds        = scratch;
-my $dist_root = $ds->base;
+my $dist_root = tempdir; 
 
 my @AUTHORS = (
     'Some One <one@some.org>',
@@ -93,7 +91,5 @@ my $cleanup_ok = is_deeply
     [ sort @AUTHORS[0..2] ],
     'contributors and git authors match up',
     ;
-
-$ds->cleanup if $cleanup_ok;
 
 done_testing;
