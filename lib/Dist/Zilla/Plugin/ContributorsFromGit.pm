@@ -1,4 +1,16 @@
+#
+# This file is part of Dist-Zilla-Plugin-ContributorsFromGit
+#
+# This software is Copyright (c) 2012 by Chris Weyl.
+#
+# This is free software, licensed under:
+#
+#   The GNU Lesser General Public License, Version 2.1, February 1999
+#
 package Dist::Zilla::Plugin::ContributorsFromGit;
+our $AUTHORITY = 'cpan:RSRCHBOY';
+# git description: 0.016-3-gee7ffea
+$Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.017';
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
@@ -145,11 +157,26 @@ sub metadata {
 
 __PACKAGE__->meta->make_immutable;
 !!42;
+
 __END__
 
-=for :stopwords zilla BeforeBuild metacpan shortlog committer mailmap
+=pod
 
-=for Pod::Coverage before_build metadata
+=encoding UTF-8
+
+=for :stopwords Chris Weyl Brendan Randy Stauner Tatsuhiko Yanick Byrd Champoux David
+Golden Graham Greb Knop Mike Miyagawa zilla BeforeBuild metacpan shortlog
+committer mailmap
+
+=for :stopwords Wishlist flattr flattr'ed gittip gittip'ed
+
+=head1 NAME
+
+Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from the list of git authors
+
+=head1 VERSION
+
+This document describes version 0.017 of Dist::Zilla::Plugin::ContributorsFromGit - released April 09, 2015 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
@@ -201,6 +228,8 @@ mandated or necessitated by this package; if you wish to use it you must
 include the Contributors section in your L<Pod::Weaver> configuration in the
 traditional fashion.
 
+=for Pod::Coverage before_build metadata
+
 =head1 METACPAN CONTRIBUTOR MATCHING
 
 L<MetaCPAN|http://metacpan.org> will attempt to match a contributor address
@@ -235,10 +264,103 @@ of installed modules and cut new releases, the mapping will appear.
 
 =head1 SEE ALSO
 
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
 L<Pod::Weaver::Section::Contributors>
+
+=item *
 
 L<Dist::Zilla::Stash::PodWeaver>
 
+=item *
+
 L<http://www.dagolden.com/index.php/1921/how-im-using-distzilla-to-give-credit-to-contributors/>
+
+=back
+
+=head1 SOURCE
+
+The development version is on github at L<http://https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit>
+and may be cloned from L<git://https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git>
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
+=head1 AUTHOR
+
+Chris Weyl <cweyl@alumni.drew.edu>
+
+=head2 I'm a material boy in a material world
+
+=begin html
+
+<a href="https://www.gittip.com/RsrchBoy/"><img src="https://raw.githubusercontent.com/gittip/www.gittip.com/master/www/assets/%25version/logo.png" /></a>
+<a href="http://bit.ly/rsrchboys-wishlist"><img src="http://wps.io/wp-content/uploads/2014/05/amazon_wishlist.resized.png" /></a>
+<a href="https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2FDist-Zilla-Plugin-ContributorsFromGit&title=RsrchBoy's%20CPAN%20Dist-Zilla-Plugin-ContributorsFromGit&tags=%22RsrchBoy's%20Dist-Zilla-Plugin-ContributorsFromGit%20in%20the%20CPAN%22"><img src="http://api.flattr.com/button/flattr-badge-large.png" /></a>
+
+=end html
+
+Please note B<I do not expect to be gittip'ed or flattr'ed for this work>,
+rather B<it is simply a very pleasant surprise>. I largely create and release
+works like this because I need them or I find it enjoyable; however, don't let
+that stop you if you feel like it ;)
+
+L<Flattr this|https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2FDist-Zilla-Plugin-ContributorsFromGit&title=RsrchBoy's%20CPAN%20Dist-Zilla-Plugin-ContributorsFromGit&tags=%22RsrchBoy's%20Dist-Zilla-Plugin-ContributorsFromGit%20in%20the%20CPAN%22>,
+L<gittip me|https://www.gittip.com/RsrchBoy/>, or indulge my
+L<Amazon Wishlist|http://bit.ly/rsrchboys-wishlist>...  If you so desire.
+
+=head1 CONTRIBUTORS
+
+=for stopwords Brendan Byrd David Golden Graham Knop Mike Greb Randy Stauner Tatsuhiko Miyagawa Yanick Champoux
+
+=over 4
+
+=item *
+
+Brendan Byrd <Perl@ResonatorSoft.org>
+
+=item *
+
+David Golden <dagolden@cpan.org>
+
+=item *
+
+Graham Knop <haarg@haarg.org>
+
+=item *
+
+Mike Greb <mikegrb@cpan.org>
+
+=item *
+
+Randy Stauner <randy@magnificent-tears.com>
+
+=item *
+
+Tatsuhiko Miyagawa <miyagawa@bulknews.net>
+
+=item *
+
+Yanick Champoux <yanick@babyl.dyndns.org>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2012 by Chris Weyl.
+
+This is free software, licensed under:
+
+  The GNU Lesser General Public License, Version 2.1, February 1999
 
 =cut

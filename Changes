@@ -1,7 +1,5 @@
 Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
-{{$NEXT}}
-
 0.017     2015-04-09 22:14:03 PDT-0700
 	* Stop using Test::TempDir/Directory::Scratch; switch to
 	  Test::TempDir::Tiny
