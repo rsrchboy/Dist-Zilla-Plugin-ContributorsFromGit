@@ -1,3 +1,10 @@
+# Travis config for @RsrchBoy's p5 packages.
+#
+# Kinda.
+#
+# GistID: 31e0e356a6233e5ee730
+# Chris Weyl <cweyl@alumni.drew.edu> 2015
+
 # use the docker/container based infrastructure
 sudo: false
 
@@ -20,13 +27,22 @@ branches:
         - "release/cpan"
 
 env:
-    - CPANM_OPTS="-q --skip-satisfied --notest"
+   global:
+      - CPANM_OPTS="-q --skip-satisfied --notest --no-man-pages"
 
 before_install:
    # git bits sometimes needed...
    - git config user.name 'Travis-CI'
    - git config user.email 'travis@nowhere.dne'
 
+   # pull down our cache
+   - export PB_LIB="dzil-cache"
+   - export PB_TARBALL="$PERLBREW_PERL@$PB_LIB.tar.bz2"
+   - perlbrew lib create $PB_LIB
+   - wget -O $PB_TARBALL "https://github.com/RsrchBoy/travis-p5-cache/blob/$PERLBREW_PERL@$PB_LIB/master/$PB_TARBALL?raw=true"
+   - test -f "$PB_TARBALL" && tar -C $PERLBREW_HOME/libs -jvxf $PB_TARBALL | wc -l
+   - perlbrew switch $PERLBREW_PERL@$PB_LIB
+   - rm $PB_TARBALL
    # gotta love failing pod tests blowing everything up...
    - cpanm $CPANM_OPTS TAP::Harness::Restricted || { cat ~/.cpanm/build.log ; false ; }
    - export HARNESS_SUBCLASS=TAP::Harness::Restricted
