@@ -14,5 +14,8 @@ env:
   global:
     - COVERAGE=1
 before_install:
+  # git bits sometimes needed...
+  - git config user.name 'Travis-CI'
+  - git config user.email 'travis@nowhere.dne'
   - cpanp x
   - eval $(curl https://travis-perl.github.io/init) --auto
