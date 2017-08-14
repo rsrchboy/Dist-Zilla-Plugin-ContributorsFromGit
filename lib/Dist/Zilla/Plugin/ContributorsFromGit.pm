@@ -177,7 +177,7 @@ L<Pod::Weaver::Section::Contributors> can find them.
 
 Note that you do not need to have the C<%PodWeaver> stash created; it will be
 added if it is not found.  However, your L<Pod::Weaver> config (aka
-c<weaver.ini>) must include the
+C<weaver.ini>) must include the
 L<Contributors|Pod::Weaver::Section::Contributors> section plugin.
 
 =head2 Dist::Zilla Phase
@@ -228,10 +228,10 @@ This package contains a YAML file containing a mapping of C<@cpan.org> author
 addresses; this list is consulted while building the contributors list, and
 can be used to replace a non-cpan.org address with one.
 
-To add to or modify this mapping, please feel free to fork, add your alternate
-email addresses to C<share/author-emails.yaml>, and submit a pull-request for
-inclusion.  It'll be merged and released; as various authors update their set
-of installed modules and cut new releases, the mapping will appear.
+To add to or modify this mapping, fork, add your alternate email addresses to
+C<share/author-emails.yaml>, and submit a pull-request for inclusion.  It'll
+be merged and released; as various authors update their set of installed
+modules and cut new releases, the mapping will appear.
 
 =head1 SEE ALSO
 
