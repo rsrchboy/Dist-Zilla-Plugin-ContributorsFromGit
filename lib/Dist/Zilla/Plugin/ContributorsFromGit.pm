@@ -12,7 +12,7 @@ use Encode qw(decode_utf8);
 use autobox::Core;
 use autobox::Junctions;
 use File::Which 'which';
-use List::AllUtils qw{ max uniq };
+use List::AllUtils qw{ max uniq apply };
 use File::ShareDir qw/ dist_dir /;
 use YAML::Tiny;
 use Path::Class;
@@ -37,11 +37,11 @@ has _contributor_list => (
 
         ### and get our list from git, filtering: "@authors"
         my @contributors = uniq
-            map  { $self->_contributor_emails->{$_} // $_ }
-            grep { $_ ne 'Your Name <you@example.com>'   }
-            grep { [ map { lc } @authors ]->none eq lc   }
-            map  { decode_utf8($_)                       }
-            map  { chomp; s/^\s*\d+\s*//; $_             }
+            map   { $self->_contributor_emails->{$_} // $_ }
+            grep  { $_ ne 'Your Name <you@example.com>'    }
+            grep  { [ map { lc } @authors ]->none eq lc    }
+            map   { decode_utf8($_)                        }
+            apply { chomp; s/^\s*\d+\s*//                  }
             `git shortlog -s -e HEAD`
             ;
 
