@@ -1,3 +1,15 @@
+# This code is taken, lock, stock, and barrel, from @karenetheridge, and can
+# be found at:
+#
+#   https://github.com/karenetheridge/Dist-Zilla-Plugin-PromptIfStale/blob/56f2fbc0827e3889e25f3da40136a6e9788e5ded/t/lib/EnsureStdinTty.pm
+#
+# It was provided and is being used under the license she has granted:
+#
+#   This software is copyright (c) 2013 by Karen Etheridge.
+#
+#   This is free software; you can redistribute it and/or modify it under the
+#   same terms as the Perl 5 programming language system itself.
+
 use strict;
 use warnings;
 
