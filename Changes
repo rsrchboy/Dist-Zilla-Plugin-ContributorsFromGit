@@ -1,7 +1,5 @@
 Revision history for Dist-Zilla-Plugin-ContributorsFromGit
 
-{{$NEXT}}
-
 0.018     2017-08-13 21:07:22 CDT-0500
 	* Fix tests for non-pty STDIN
 
