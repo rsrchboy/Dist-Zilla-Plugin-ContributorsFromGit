@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.svg?branch=master)](https://travis-ci.org/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit)
+[![Build Status](https://travis-ci.org/rsrchboy/Dist-Zilla-Plugin-ContributorsFromGit.svg?branch=master)](https://travis-ci.org/rsrchboy/Dist-Zilla-Plugin-ContributorsFromGit)
 [![Kwalitee status](http://cpants.cpanauthors.org/dist/Dist-Zilla-Plugin-ContributorsFromGit.png)](http://cpants.charsbar.org/dist/overview/Dist-Zilla-Plugin-ContributorsFromGit)
-[![Coverage Status](https://coveralls.io/repos/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/badge.svg?branch=master)](https://coveralls.io/r/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit?branch=master)
+[![Coverage Status](https://coveralls.io/repos/rsrchboy/Dist-Zilla-Plugin-ContributorsFromGit/badge.svg?branch=master)](https://coveralls.io/r/rsrchboy/Dist-Zilla-Plugin-ContributorsFromGit?branch=master)
 
 # NAME
 
@@ -8,7 +8,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 # VERSION
 
-This document describes version 0.018 of Dist::Zilla::Plugin::ContributorsFromGit - released August 13, 2017 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.019 of Dist::Zilla::Plugin::ContributorsFromGit - released August 14, 2017 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 # SYNOPSIS
 
@@ -103,7 +103,7 @@ Please see those modules/websites for more information related to this module.
 # BUGS
 
 Please report any bugs or feature requests on the bugtracker website
-[https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues](https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues)
+[https://github.com/rsrchboy/Dist-Zilla-Plugin-ContributorsFromGit/issues](https://github.com/rsrchboy/Dist-Zilla-Plugin-ContributorsFromGit/issues)
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
