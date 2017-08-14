@@ -1,10 +1,14 @@
+[![Build Status](https://travis-ci.org/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.svg?branch=master)](https://travis-ci.org/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit)
+[![Kwalitee status](http://cpants.cpanauthors.org/dist/Dist-Zilla-Plugin-ContributorsFromGit.png)](http://cpants.charsbar.org/dist/overview/Dist-Zilla-Plugin-ContributorsFromGit)
+[![Coverage Status](https://coveralls.io/repos/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/badge.svg?branch=master)](https://coveralls.io/r/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit?branch=master)
+
 # NAME
 
 Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from the list of git authors
 
 # VERSION
 
-This document describes version 0.017 of Dist::Zilla::Plugin::ContributorsFromGit - released April 09, 2015 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.018 of Dist::Zilla::Plugin::ContributorsFromGit - released August 13, 2017 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 # SYNOPSIS
 
@@ -32,7 +36,7 @@ git authors list) to the stash in such a way that
 
 Note that you do not need to have the `%PodWeaver` stash created; it will be
 added if it is not found.  However, your [Pod::Weaver](https://metacpan.org/pod/Pod::Weaver) config (aka
-c<weaver.ini>) must include the
+`weaver.ini`) must include the
 [Contributors](https://metacpan.org/pod/Pod::Weaver::Section::Contributors) section plugin.
 
 ## Dist::Zilla Phase
@@ -83,10 +87,10 @@ This package contains a YAML file containing a mapping of `@cpan.org` author
 addresses; this list is consulted while building the contributors list, and
 can be used to replace a non-cpan.org address with one.
 
-To add to or modify this mapping, please feel free to fork, add your alternate
-email addresses to `share/author-emails.yaml`, and submit a pull-request for
-inclusion.  It'll be merged and released; as various authors update their set
-of installed modules and cut new releases, the mapping will appear.
+To add to or modify this mapping, fork, add your alternate email addresses to
+`share/author-emails.yaml`, and submit a pull-request for inclusion.  It'll
+be merged and released; as various authors update their set of installed
+modules and cut new releases, the mapping will appear.
 
 # SEE ALSO
 
@@ -96,15 +100,10 @@ Please see those modules/websites for more information related to this module.
 - [Dist::Zilla::Stash::PodWeaver](https://metacpan.org/pod/Dist::Zilla::Stash::PodWeaver)
 - [http://www.dagolden.com/index.php/1921/how-im-using-distzilla-to-give-credit-to-contributors/](http://www.dagolden.com/index.php/1921/how-im-using-distzilla-to-give-credit-to-contributors/)
 
-# SOURCE
-
-The development version is on github at [http://https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit](http://https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit)
-and may be cloned from [git://https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git](git://https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git)
-
 # BUGS
 
 Please report any bugs or feature requests on the bugtracker website
-https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues
+[https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues](https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues)
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
@@ -113,23 +112,6 @@ feature.
 # AUTHOR
 
 Chris Weyl <cweyl@alumni.drew.edu>
-
-## I'm a material boy in a material world
-
-<div>
-    <a href="https://www.gittip.com/RsrchBoy/"><img src="https://raw.githubusercontent.com/gittip/www.gittip.com/master/www/assets/%25version/logo.png" /></a>
-    <a href="http://bit.ly/rsrchboys-wishlist"><img src="http://wps.io/wp-content/uploads/2014/05/amazon_wishlist.resized.png" /></a>
-    <a href="https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2FDist-Zilla-Plugin-ContributorsFromGit&title=RsrchBoy's%20CPAN%20Dist-Zilla-Plugin-ContributorsFromGit&tags=%22RsrchBoy's%20Dist-Zilla-Plugin-ContributorsFromGit%20in%20the%20CPAN%22"><img src="http://api.flattr.com/button/flattr-badge-large.png" /></a>
-</div>
-
-Please note **I do not expect to be gittip'ed or flattr'ed for this work**,
-rather **it is simply a very pleasant surprise**. I largely create and release
-works like this because I need them or I find it enjoyable; however, don't let
-that stop you if you feel like it ;)
-
-[Flattr this](https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2FDist-Zilla-Plugin-ContributorsFromGit&title=RsrchBoy&#x27;s%20CPAN%20Dist-Zilla-Plugin-ContributorsFromGit&tags=%22RsrchBoy&#x27;s%20Dist-Zilla-Plugin-ContributorsFromGit%20in%20the%20CPAN%22),
-[gittip me](https://www.gittip.com/RsrchBoy/), or indulge my
-[Amazon Wishlist](http://bit.ly/rsrchboys-wishlist)...  If you so desire.
 
 # CONTRIBUTORS
 
@@ -143,7 +125,7 @@ that stop you if you feel like it ;)
 
 # COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2012 by Chris Weyl.
+This software is Copyright (c) 2017, 2015, 2014, 2013, 2012 by Chris Weyl.
 
 This is free software, licensed under:
 
