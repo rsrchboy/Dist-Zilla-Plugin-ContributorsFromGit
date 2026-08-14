@@ -3,7 +3,7 @@ package Dist::Zilla::Plugin::ContributorsFromGit;
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
 use utf8;
-use v5.10;
+use v5.24;
 
 use Moose;
 use MooseX::AttributeShortcuts;
